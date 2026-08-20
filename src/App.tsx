@@ -65,7 +65,7 @@ function App() {
           {/* Subtle Paper Texture Overlay */}
           <div className="absolute inset-0 bg-paper-texture pointer-events-none opacity-40 z-40"></div>
 
-          <div className="p-6 md:p-12 lg:p-16 relative z-10 space-y-24 md:space-y-32">
+          <div className="pt-4 px-6 pb-6 md:pt-6 md:px-12 md:pb-12 lg:pt-8 lg:px-16 lg:pb-16 relative z-10 space-y-24 md:space-y-32">
             <HeroSection />
             <AboutSection />
             <ExperienceSection />

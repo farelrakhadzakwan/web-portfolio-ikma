@@ -16,7 +16,7 @@ export const HeroSection: React.FC = () => {
   };
 
   return (
-    <section className="relative min-h-[75vh] flex flex-col md:flex-row items-center gap-12 pt-6" id="hero">
+    <section className="relative min-h-[65vh] flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-12 pt-1" id="hero">
 
       <div className="flex-1 relative">
         <motion.div
