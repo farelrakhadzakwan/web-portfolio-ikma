@@ -57,54 +57,62 @@ export const HeroSection: React.FC = () => {
         </div>
       </div>
 
-      <div className="flex-1 relative flex justify-center items-center min-h-[380px] w-full">
-        {/* Polaroid Scrapbook Composition */}
+      <div className="flex-1 relative flex justify-center items-center min-h-[420px] w-full my-4">
+        {/* Layered Organic Scrapbook Composition */}
         
-        {/* Main Polaroid card */}
-        <motion.div 
-          whileHover={{ scale: 1.03, rotate: 1 }}
-          className="paper-card p-4 pb-10 w-64 md:w-72 h-80 rotate-2 absolute z-20 flex flex-col items-center justify-between bg-white border border-black/10 shadow-lg"
-        >
-          <div className="w-full h-56 border border-pink-100 relative overflow-hidden text-center bg-softpink/20">
-            <img 
-              src="/Client.jpeg" 
-              alt={profile.name} 
-              className="w-full h-full object-cover object-center"
-            />
-          </div>
-          <span className="handwritten text-textmain text-xl">a little bit of everything ♡</span>
-          <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-5 bg-white/80 backdrop-blur-sm rotate-1 shadow-sm border-t border-b border-white/60"></div>
-        </motion.div>
-
-        {/* Sticky Note 1 (positioned behind Polaroid card) */}
+        {/* Yellow Sticky Note (Top-Right Background Layer) */}
         <motion.div 
           whileHover={{ y: -4, rotate: 12 }}
-          className="absolute -right-2 md:-right-6 -top-4 w-44 h-44 bg-yellow-100/90 shadow-sm p-4 rotate-12 z-10 border border-yellow-200"
+          className="absolute -top-6 right-0 md:-right-4 w-44 md:w-48 h-44 bg-yellow-100/95 shadow-md p-4 rotate-[10deg] z-10 border border-yellow-200/80 rounded-xs"
         >
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-4 bg-orange-200/50 backdrop-blur-md -rotate-2 -mt-2"></div>
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-14 h-4 bg-orange-200/60 backdrop-blur-md -rotate-2 -mt-2 shadow-2xs"></div>
           <p className="handwritten text-textmain mt-2 text-xl leading-snug">
             currently figuring things out ✿
           </p>
           <div className="mt-3 flex flex-wrap gap-1">
             {profile.professional_identity?.supporting?.slice(0, 3).map((item, idx) => (
-              <span key={idx} className="text-[10px] bg-yellow-200/60 px-1.5 py-0.5 rounded text-textmain font-sans">
+              <span key={idx} className="text-[10px] bg-yellow-200/70 px-1.5 py-0.5 rounded text-textmain font-sans font-medium">
                 #{item}
               </span>
             ))}
           </div>
         </motion.div>
 
-        {/* Note Paper 2 */}
+        {/* Small Decorative Stamp (Top-Left Accent Layer) */}
         <motion.div 
-          whileHover={{ y: -4, rotate: -8 }}
-          className="absolute left-2 md:left-4 bottom-2 w-52 h-36 bg-blue-50/90 shadow-sm p-4 -rotate-6 z-10 border border-blue-100"
+          whileHover={{ rotate: -12, scale: 1.05 }}
+          className="absolute top-2 left-2 md:left-6 bg-cream border border-orange-200 text-deeprose font-display text-xs px-3 py-1.5 shadow-sm -rotate-12 z-15 rounded-xs handwritten"
         >
-           <div className="w-3 h-3 rounded-full bg-[#DFD3D8] absolute top-2 left-2"></div>
-           <p className="handwritten text-textmain text-lg text-center mt-2">
+          ♡ personal binder
+        </motion.div>
+
+        {/* Main Polaroid Card (Center Anchor) */}
+        <motion.div 
+          whileHover={{ scale: 1.03, rotate: 0 }}
+          className="paper-card p-3.5 pb-9 w-64 md:w-72 h-80 -rotate-2 relative z-20 flex flex-col items-center justify-between bg-white border border-black/10 shadow-xl"
+        >
+          <div className="w-full h-56 border border-pink-100 relative overflow-hidden text-center bg-softpink/20 rounded-xs">
+            <img 
+              src="/Client.jpeg" 
+              alt={profile.name} 
+              className="w-full h-full object-cover object-center"
+            />
+          </div>
+          <span className="handwritten text-textmain text-xl mt-1">a little bit of everything ♡</span>
+          <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-5 bg-white/80 backdrop-blur-sm rotate-1 shadow-sm border-t border-b border-white/60"></div>
+        </motion.div>
+
+        {/* Blue Note Paper (Bottom-Left Foreground Layer) */}
+        <motion.div 
+          whileHover={{ y: -4, rotate: -10 }}
+          className="absolute -bottom-4 -left-2 md:left-4 w-52 md:w-56 h-36 bg-blue-50/95 shadow-md p-4 -rotate-6 z-30 border border-blue-200/80 rounded-xs"
+        >
+           <div className="w-3.5 h-3.5 rounded-full bg-accentpink/40 border border-accentpink/60 absolute top-2 left-2 shadow-2xs"></div>
+           <p className="handwritten text-textmain text-lg text-center mt-2 font-medium">
              tech + people + creativity
            </p>
-           <div className="text-center mt-2 text-xs font-sans text-textmuted">
-              {profile.location ? `${profile.location.city}, ${profile.location.country}` : ''}
+           <div className="text-center mt-2 text-xs font-sans text-textmuted bg-white/60 py-1 rounded border border-blue-100/60">
+              📍 {profile.location ? `${profile.location.city}, ${profile.location.country}` : 'Malang, Indonesia'}
            </div>
         </motion.div>
       </div>
