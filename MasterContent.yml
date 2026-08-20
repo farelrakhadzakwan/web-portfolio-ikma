@@ -1,0 +1,885 @@
+# ============================================================
+# MASTER CONTENT — PORTFOLIO WEBSITE
+# Source: CV 2026 Ikmalunisa Annora
+# Purpose: Single source of truth for portfolio website content
+# ============================================================
+
+metadata:
+  document_type: "portfolio_master_content"
+  version: "1.0"
+  last_updated: "2026-08-20"
+  source: "CV 2026 Ikmalunisa Annora"
+  language:
+    primary: "en"
+    secondary: "id"
+  content_policy:
+    - "Use only verified information contained in the source CV."
+    - "Do not invent employers, projects, metrics, responsibilities, or achievements."
+    - "Portfolio copy may rephrase source content for clarity but must preserve factual meaning."
+    - "Quantitative achievements should retain their original values."
+    - "Unknown information should remain null rather than being fabricated."
+
+# ============================================================
+# PERSONAL INFORMATION
+# ============================================================
+
+profile:
+  name: "Ikmalunisa Annora"
+
+  location:
+    city: "Malang"
+    country: "Indonesia"
+
+  contact:
+    phone: "081358357202"
+    email: "ikmalunisaa11@gmail.com"
+    linkedin: "www.linkedin.com/in/ikmalunisaannora"
+    portfolio: "portofolio"
+
+  professional_identity:
+    primary:
+      - "Information Technology Education Graduate"
+      - "Human Resources"
+      - "People Management"
+      - "Project Coordination"
+      - "Data Analysis"
+
+    supporting:
+      - "Technology"
+      - "Organizational Leadership"
+      - "HR Administration"
+      - "Process Coordination"
+      - "Data Processing"
+
+  professional_summary: >
+    Information Technology Education graduate with experience in Human Resources,
+    people management, organizational leadership, and project coordination.
+    Strong analytical and technical background with skills in data analysis,
+    Microsoft Excel, Pivot Tables, VLOOKUP, HLOOKUP, data processing, and
+    technology. Experienced in managing people, coordinating processes,
+    analyzing data, and supporting organizational needs. Adaptable, proactive,
+    and quick to learn in dynamic work environments.
+
+# ============================================================
+# EDUCATION
+# ============================================================
+
+education:
+  - institution: "Brawijaya University"
+    location: "Malang"
+    degree: "Bachelor Degree"
+    field: "Information Technology Education"
+    start_date: "2022-08"
+    end_date: "2026-07"
+    gpa: "3.83/4.00"
+
+    highlights:
+      - description: >
+          Involved in 20+ organizations and committees, with experience
+          in communication, coordination, and team management.
+        metric:
+          value: 20
+          unit: "organizations and committees"
+          qualifier: "20+"
+
+      - description: >
+          Completed technology-based projects involving data processing,
+          project management, and digital solutions.
+
+# ============================================================
+# WORK EXPERIENCE
+# ============================================================
+
+work_experience:
+
+  - company: "PT. ASDP Indonesia Ferry (Persero)"
+    location: null
+    employment_type: null
+    start_date: "2026-07"
+    end_date: "Present"
+    role: "Human Resources"
+
+    responsibilities:
+      - "Supported HR administration."
+      - "Managed employee data."
+      - "Supported recruitment activities."
+      - "Supported employee onboarding."
+      - "Managed employee documentation."
+      - "Assisted with attendance administration."
+      - "Assisted with leave administration."
+      - "Assisted with overtime administration."
+      - "Assisted with training administration."
+      - "Supported HR reporting."
+      - "Coordinated with internal teams."
+
+    functional_areas:
+      - "Human Resources"
+      - "HR Administration"
+      - "Employee Data Management"
+      - "Recruitment"
+      - "Onboarding"
+      - "HR Documentation"
+      - "HR Reporting"
+      - "Internal Coordination"
+
+  - company: "PT. Dibimbing"
+    location: null
+    employment_type: null
+    start_date: "2025-02"
+    end_date: "Present"
+    role: "Class Manager Cyber Security Bootcamp"
+
+    responsibilities:
+      - "Managed day-to-day class operations."
+      - "Managed attendance."
+      - "Monitored LMS activities."
+      - "Monitored student progress."
+      - "Managed class administration."
+      - "Coordinated communication between students, mentors, and internal teams."
+      - "Supported learning activities."
+      - "Supported assignments."
+      - "Supported student engagement."
+
+    functional_areas:
+      - "Class Operations"
+      - "Administration"
+      - "Learning Management"
+      - "Student Progress Monitoring"
+      - "Communication"
+      - "Coordination"
+      - "Stakeholder Management"
+
+# ============================================================
+# PROJECTS
+# ============================================================
+
+projects:
+
+  - id: "project-01"
+    title: "Integrated Web Application for Restaurant and Ordering System"
+    role: "Project Management"
+    category:
+      - "Web Application"
+      - "Project Management"
+      - "System Integration"
+      - "API Integration"
+
+    description: >
+      Developed two integrated web applications for restaurant and ordering
+      management, with XML-based API integration to enable data exchange
+      and real-time synchronization.
+
+    responsibilities:
+      - "Developed two integrated web applications for restaurant and ordering management."
+      - "Integrated both applications through an XML-based API."
+      - "Enabled efficient data exchange between both systems."
+      - "Enabled real-time synchronization."
+      - "Managed project implementation."
+      - "Ensured smooth integration."
+      - "Maintained consistent data flow between both systems."
+
+    technologies:
+      - "XML"
+      - "API"
+
+    outcomes:
+      - "Integrated two web applications."
+      - "Enabled data exchange between systems."
+      - "Enabled real-time synchronization."
+      - "Maintained consistent data flow."
+
+  - id: "project-02"
+    title: "User Sentiment Analysis for Mobile Financial App"
+    role: "Data Analyst"
+    category:
+      - "Data Analysis"
+      - "Sentiment Analysis"
+      - "Machine Learning"
+      - "Natural Language Processing"
+
+    description: >
+      Analyzed Google Play Store reviews for a mobile financial application
+      using web scraping, text preprocessing, machine learning classification,
+      and data visualization to generate sentiment insights for UX improvement.
+
+    responsibilities:
+      - "Collected Google Play Store reviews."
+      - "Processed 10,000 Google Play Store reviews."
+      - "Performed text cleaning."
+      - "Performed tokenization."
+      - "Performed stopword removal."
+      - "Performed stemming."
+      - "Implemented Naive Bayes classification."
+      - "Applied SMOTE."
+      - "Applied NearMiss."
+      - "Classified positive, neutral, and negative sentiments."
+      - "Created word clouds."
+      - "Created statistical charts."
+      - "Generated sentiment insights to support UX improvement for the DNA app."
+
+    technologies:
+      - "Web Scraping"
+      - "Text Preprocessing"
+      - "Naive Bayes"
+      - "SMOTE"
+      - "NearMiss"
+      - "Word Cloud"
+      - "Statistical Visualization"
+
+    dataset:
+      source: "Google Play Store"
+      volume: "10,000 reviews"
+
+    machine_learning:
+      algorithm: "Naive Bayes"
+      classification_type: "Sentiment Classification"
+      classes:
+        - "Positive"
+        - "Neutral"
+        - "Negative"
+      techniques:
+        - "SMOTE"
+        - "NearMiss"
+
+    performance:
+      accuracy: "78%"
+
+    outcomes:
+      - "Generated sentiment classification results."
+      - "Visualized sentiment insights."
+      - "Supported UX improvement analysis for the DNA app."
+
+  - id: "project-03"
+    title: "CRUD Website for Student Course Registration (KRS)"
+    role: "Web Development"
+    category:
+      - "Web Development"
+      - "CRUD"
+      - "Authentication"
+      - "Data Management"
+
+    description: >
+      Developed a CRUD-based website for managing Student Course Registration
+      (KRS) with an intuitive interface, secure authentication, data validation,
+      and error handling.
+
+    responsibilities:
+      - "Developed a CRUD-based website for Student Course Registration (KRS)."
+      - "Designed an intuitive user interface."
+      - "Implemented secure user authentication."
+      - "Implemented data validation."
+      - "Protected student information."
+      - "Maintained data integrity."
+      - "Implemented error handling for each operation."
+      - "Improved reliability and user-friendliness of course registration management."
+
+    technologies:
+      - "CRUD"
+      - "User Authentication"
+      - "Data Validation"
+      - "Error Handling"
+
+    outcomes:
+      - "Provided a system for course registration management."
+      - "Protected student information."
+      - "Maintained data integrity."
+      - "Improved reliability of registration operations."
+
+# ============================================================
+# ORGANIZATION EXPERIENCE
+# ============================================================
+
+organization_experience:
+
+  - organization: "LPM DISPLAY"
+    location: "Malang"
+    start_date: "2024-01"
+    end_date: "2025-12"
+
+    roles:
+      - "Head of Innovation and Business"
+      - "Head of Internal"
+
+    achievements:
+      - description: >
+          Led entrepreneurial initiatives and managed business operations,
+          contributing to a 20% increase in organizational revenue and
+          15% growth in sales.
+        metrics:
+          revenue_growth: "20%"
+          sales_growth: "15%"
+
+      - description: >
+          Developed new business opportunities and strategies to strengthen
+          organizational sustainability and expand revenue streams.
+
+      - description: >
+          Mentored and coordinated 8 staff members, ensuring effective task
+          distribution, communication, and project execution.
+        metric:
+          staff_coordinated: 8
+
+      - description: >
+          Led internal coordination, monitored staff performance, and managed
+          organizational programs to strengthen teamwork and member engagement.
+
+      - description: >
+          Collaborated with the leadership team on strategic initiatives and
+          served as MC for organizational events, supporting organizational
+          development and member engagement.
+
+    competencies:
+      - "Leadership"
+      - "Business Development"
+      - "People Management"
+      - "Task Distribution"
+      - "Internal Coordination"
+      - "Performance Monitoring"
+      - "Strategic Initiatives"
+      - "Public Speaking"
+
+  - organization: "DEVGIRLS"
+    location: "Malang"
+    start_date: "2024-01"
+    end_date: "2024-12"
+
+    role: "Staff of Public Relation"
+
+    achievements:
+      - description: >
+          Managed and published 50+ content pieces across Instagram, TikTok,
+          and LinkedIn while maintaining consistent branding and audience engagement.
+        metric:
+          content_pieces: "50+"
+          platforms:
+            - "Instagram"
+            - "TikTok"
+            - "LinkedIn"
+
+      - description: >
+          Developed 30+ content ideas and campaigns, contributing to a 20%
+          increase in follower engagement.
+        metrics:
+          content_ideas: "30+"
+          follower_engagement_growth: "20%"
+
+      - description: >
+          Built and maintained partnerships with 10+ external organizations
+          and stakeholders to support collaboration opportunities.
+        metric:
+          partnerships: "10+"
+
+      - description: >
+          Organized benchmarking activities and served as an MC to facilitate
+          knowledge exchange and strengthen organizational practices.
+
+      - description: >
+          Monitored social media analytics and supported PR strategies,
+          contributing to a 25% improvement in content reach and 30% increase
+          in organizational visibility.
+        metrics:
+          content_reach_improvement: "25%"
+          organizational_visibility_growth: "30%"
+
+    competencies:
+      - "Public Relations"
+      - "Content Management"
+      - "Content Strategy"
+      - "Social Media"
+      - "Partnership Management"
+      - "Stakeholder Engagement"
+      - "Social Media Analytics"
+      - "Public Speaking"
+
+  - organization: "Student Executive Board of Faculty"
+    location: "Malang"
+    start_date: "2022-10"
+    end_date: "2023-12"
+
+    roles:
+      - "Intern Staff"
+      - "Staff of Public Relations Ministry"
+
+    achievements:
+      - description: >
+          Progressed from Intern Staff to Staff of Public Relations Ministry,
+          contributing to organizational programs, communication, and
+          stakeholder engagement.
+
+      - description: >
+          Served as Person in Charge of Study Excursion, coordinating logistics
+          and supervising a study visit to IT companies involving 120+ participants.
+        metric:
+          participants: "120+"
+
+      - description: >
+          Led Harmonization of the Institution by coordinating committee
+          formation for Sambang, Forum Discussion, and Organization and
+          Community Fun-Day programs.
+
+      - description: >
+          Served as Public Relations Officer for FILKOM Goes to School,
+          coordinating collaboration with 6 schools to promote faculty
+          programs and student engagement.
+        metric:
+          schools: 6
+
+      - description: >
+          Served as Vice Chair of the SIKOPER Division and managed logistics
+          for the BEM FILKOM 2022 farewell event while supporting other
+          organizational programs.
+
+    competencies:
+      - "Public Relations"
+      - "Event Management"
+      - "Logistics"
+      - "Stakeholder Coordination"
+      - "Committee Management"
+      - "Communication"
+      - "Leadership"
+
+  - organization: "4C Competition"
+    location: "Malang"
+    start_date: "2023-11"
+    end_date: "2023-11"
+
+    role: "Liaison Officer"
+
+    achievements:
+      - description: >
+          Served as the primary point of contact for 10 finalist teams,
+          ensuring smooth communication and coordination throughout the competition.
+        metric:
+          finalist_teams: 10
+
+      - description: >
+          Supported the organization of the Game Application Development
+          competition, including competition mechanics, participant
+          presentations, and coordination with judges.
+
+      - description: >
+          Managed presentation schedules as the official timekeeper,
+          ensuring sessions ran on time and supporting a smooth evaluation process.
+
+    competencies:
+      - "Liaison Management"
+      - "Event Coordination"
+      - "Communication"
+      - "Time Management"
+      - "Competition Management"
+
+  - organization: "GEMASTIK XVI 2023"
+    location: "Malang"
+    start_date: "2023-08"
+    end_date: "2023-09"
+
+    role: "Liaison Officer"
+
+    division: "Smart City"
+
+    achievements:
+      - description: >
+          Managed logistics and served as the primary point of contact for
+          3 judges, including accommodation, transportation, meals, and event arrangements.
+        metric:
+          judges: 3
+
+      - description: >
+          Coordinated judging schedules, provided necessary evaluation
+          materials, and maintained communication with 15+ participating teams.
+        metric:
+          participating_teams: "15+"
+
+      - description: >
+          Resolved issues between judges and participants while ensuring all
+          judging rounds were completed smoothly and on schedule.
+
+    competencies:
+      - "Logistics Management"
+      - "Stakeholder Coordination"
+      - "Event Operations"
+      - "Problem Solving"
+      - "Communication"
+
+  - organization: "International Conference of Asian Student"
+    location: "Malang"
+    start_date: "2023-05"
+    end_date: "2023-05"
+
+    role: "Public Relation"
+
+    achievements:
+      - description: >
+          Coordinated communication with external parties, speakers,
+          participants, and collaborators to support smooth event operations.
+
+      - description: >
+          Served as a Liaison Officer for 30+ international participants
+          from Malaysia, assisting with their needs throughout the event.
+        metric:
+          international_participants: "30+"
+          country: "Malaysia"
+
+      - description: >
+          Supported the creation of a welcoming and professional event
+          environment, contributing to positive participant experiences
+          and event success.
+
+    competencies:
+      - "Public Relations"
+      - "International Communication"
+      - "Liaison Management"
+      - "Stakeholder Engagement"
+      - "Event Operations"
+
+# ============================================================
+# SKILLS
+# ============================================================
+
+skills:
+
+  hard_skills:
+    - name: "HTML"
+      category: "Programming & Web"
+      proficiency: null
+
+    - name: "CSS"
+      category: "Programming & Web"
+      proficiency: null
+
+    - name: "SQL"
+      category: "Programming & Database"
+      proficiency: null
+
+    - name: "Java"
+      category: "Programming"
+      proficiency: null
+
+    - name: "Python"
+      category: "Programming & Data"
+      proficiency: null
+
+    - name: "Data Analysis"
+      category: "Data"
+      proficiency: null
+
+    - name: "Data Processing"
+      category: "Data"
+      proficiency: null
+
+    - name: "Microsoft Excel"
+      category: "Productivity & Data"
+      proficiency: null
+
+    - name: "Pivot Tables"
+      category: "Data Analysis"
+      proficiency: null
+
+    - name: "VLOOKUP"
+      category: "Data Analysis"
+      proficiency: null
+
+    - name: "HLOOKUP"
+      category: "Data Analysis"
+      proficiency: null
+
+  soft_skills:
+    - "Leadership"
+    - "Public Speaking"
+    - "Problem Solving"
+    - "Analytical Thinking"
+    - "Research"
+    - "Teamwork"
+    - "Project Management"
+    - "Product Management"
+    - "Risk Management"
+
+  tools:
+    - "Figma"
+    - "Canva"
+    - "Microsoft Word"
+    - "Microsoft Excel"
+    - "Microsoft PowerPoint"
+    - "Notion"
+    - "Trello"
+    - "Google Workspace"
+    - "VSCode"
+    - "NetBeans"
+
+  languages:
+    - language: "Indonesian"
+      proficiency: null
+
+    - language: "English"
+      proficiency: null
+
+# ============================================================
+# CERTIFICATIONS & TRAINING
+# ============================================================
+
+certifications_and_training:
+
+  - provider: "Trust Training Partners"
+    program: "Microsoft Office Desktop Application"
+
+    competencies:
+      - "Microsoft Office"
+      - "Microsoft Word"
+      - "Microsoft Excel"
+      - "Microsoft PowerPoint"
+      - "Data Processing"
+      - "Document Management"
+
+    credential_id: null
+    issue_date: null
+    expiry_date: null
+
+# ============================================================
+# CORE COMPETENCY CLUSTERS
+# Useful for portfolio navigation and positioning
+# ============================================================
+
+competency_clusters:
+
+  information_technology:
+    - "Information Technology Education"
+    - "Web Development"
+    - "HTML"
+    - "CSS"
+    - "SQL"
+    - "Java"
+    - "Python"
+    - "API Integration"
+    - "CRUD"
+    - "Authentication"
+    - "Data Validation"
+
+  data_and_analytics:
+    - "Data Analysis"
+    - "Data Processing"
+    - "Sentiment Analysis"
+    - "Machine Learning"
+    - "Naive Bayes"
+    - "Text Preprocessing"
+    - "Web Scraping"
+    - "Data Visualization"
+    - "Statistical Charts"
+    - "Word Clouds"
+    - "Microsoft Excel"
+    - "Pivot Tables"
+    - "VLOOKUP"
+    - "HLOOKUP"
+
+  human_resources:
+    - "HR Administration"
+    - "Employee Data Management"
+    - "Recruitment"
+    - "Onboarding"
+    - "Employee Documentation"
+    - "Attendance Administration"
+    - "Leave Administration"
+    - "Overtime Administration"
+    - "Training Administration"
+    - "HR Reporting"
+
+  management_and_coordination:
+    - "Project Management"
+    - "People Management"
+    - "Team Coordination"
+    - "Stakeholder Management"
+    - "Event Management"
+    - "Logistics Management"
+    - "Process Coordination"
+    - "Risk Management"
+    - "Performance Monitoring"
+
+  communication_and_public_relations:
+    - "Public Relations"
+    - "Public Speaking"
+    - "Content Management"
+    - "Social Media"
+    - "Partnership Management"
+    - "International Communication"
+    - "Liaison Management"
+    - "Stakeholder Engagement"
+
+# ============================================================
+# PORTFOLIO WEBSITE CONTENT MAPPING
+# ============================================================
+
+website_sections:
+
+  hero:
+    name: "Ikmalunisa Annora"
+    headline: "Information Technology Education Graduate"
+    supporting_keywords:
+      - "Human Resources"
+      - "Data Analysis"
+      - "Project Coordination"
+      - "People Management"
+      - "Technology"
+
+  about:
+    source: "profile.professional_summary"
+
+    key_points:
+      - "Information Technology Education graduate"
+      - "Experience in Human Resources"
+      - "Experience in people management"
+      - "Experience in organizational leadership"
+      - "Experience in project coordination"
+      - "Strong analytical and technical background"
+      - "Data analysis and processing"
+      - "Adaptable"
+      - "Proactive"
+      - "Quick to learn"
+
+  experience:
+    source: "work_experience"
+
+  projects:
+    source: "projects"
+
+  organizations:
+    source: "organization_experience"
+
+  skills:
+    source: "skills"
+
+  certifications:
+    source: "certifications_and_training"
+
+  contact:
+    source: "profile.contact"
+
+# ============================================================
+# PORTFOLIO POSITIONING
+# ============================================================
+
+positioning:
+
+  primary_profile:
+    title: "Information Technology Education Graduate"
+    focus:
+      - "Human Resources"
+      - "Data Analysis"
+      - "Project Coordination"
+      - "Technology"
+
+  professional_strengths:
+    - "Combines technical knowledge with organizational experience."
+    - "Experienced in HR administration and employee data management."
+    - "Experienced in data analysis and machine learning projects."
+    - "Experienced in project and operational coordination."
+    - "Experienced in people management and team coordination."
+    - "Experienced in public relations and stakeholder communication."
+
+  evidence:
+    technical:
+      - "Three technology/data projects."
+      - "Python, SQL, Java, HTML, and CSS."
+      - "Data analysis and machine learning experience."
+      - "Microsoft Excel and data processing."
+
+    professional:
+      - "Human Resources experience at PT. ASDP Indonesia Ferry (Persero)."
+      - "Class Manager experience at PT. Dibimbing."
+
+    leadership:
+      - "Head of Innovation and Business."
+      - "Head of Internal."
+      - "Coordinated 8 staff members."
+
+    communication:
+      - "Public Relations experience."
+      - "Liaison Officer experience."
+      - "International participant coordination."
+
+# ============================================================
+# KEY METRICS
+# Centralized to make website statistics easy to maintain
+# ============================================================
+
+key_metrics:
+
+  education:
+    organizations_and_committees: "20+"
+
+  organization:
+    lpm_display:
+      revenue_growth: "20%"
+      sales_growth: "15%"
+      staff_coordinated: 8
+
+    devgirls:
+      content_pieces: "50+"
+      content_ideas: "30+"
+      follower_engagement_growth: "20%"
+      partnerships: "10+"
+      content_reach_improvement: "25%"
+      organizational_visibility_growth: "30%"
+
+    student_executive_board:
+      study_excursion_participants: "120+"
+      schools_for_filkom_goes_to_school: 6
+
+    competition:
+      finalist_teams: 10
+
+    gemastik:
+      judges: 3
+      participating_teams: "15+"
+
+    international_conference:
+      international_participants: "30+"
+
+  project:
+    sentiment_analysis:
+      reviews_processed: "10,000"
+      accuracy: "78%"
+
+# ============================================================
+# CONTENT TAGS
+# Useful for filtering projects / experience on the website
+# ============================================================
+
+tags:
+
+  - "Information Technology"
+  - "Information Technology Education"
+  - "Human Resources"
+  - "HR Administration"
+  - "Data Analysis"
+  - "Data Processing"
+  - "Machine Learning"
+  - "Sentiment Analysis"
+  - "Web Development"
+  - "Project Management"
+  - "People Management"
+  - "Leadership"
+  - "Public Relations"
+  - "Stakeholder Management"
+  - "Event Management"
+  - "Communication"
+  - "Technology"
+  - "Organizational Leadership"
+
+# ============================================================
+# SOURCE GAPS
+# Information intentionally left unspecified in the CV
+# ============================================================
+
+source_gaps:
+
+  - "Exact portfolio website URL is not provided; CV only contains the text 'portofolio'."
+  - "Employment type for work experience is not specified."
+  - "Detailed job location for PT. ASDP Indonesia Ferry (Persero) is not specified."
+  - "Detailed job location for PT. Dibimbing is not specified."
+  - "Skill proficiency levels are not specified."
+  - "Certification issue date is not specified."
+  - "Certification credential ID is not specified."
+  - "Language proficiency levels are not specified."
+  - "Project dates are not specified."
+  - "Project repositories or live demo URLs are not specified."
+  - "Project screenshots or visual assets are not specified."
+  - "Detailed technology stack for each project is only partially specified."

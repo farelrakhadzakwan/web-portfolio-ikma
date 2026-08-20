@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#FFF8FB] text-textmain font-body antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+.paper-card {
+  @apply bg-paper rounded-sm border border-black/5 shadow-paper transition-shadow duration-300 relative overflow-hidden;
+}
+
+.paper-card::before {
+  content: "";
+  @apply absolute inset-0 bg-paper-texture pointer-events-none;
+}
+
+.notebook-lines {
+  @apply bg-notebook-lines bg-top;
+}
+
+.handwritten {
+  @apply font-handwritten text-xl tracking-wide;
+}
+
+/* Scrapbook effects */
+.tape-top-center {
+  @apply absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-6 bg-white/70 backdrop-blur-sm shadow-sm rotate-2 z-10;
+}
+
+.binder-ring {
+  @apply absolute w-4 h-4 rounded-full bg-[#FFF8FB] border-2 border-black/10 shadow-inner;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-[#FFF8FB];
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-blush rounded-full;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-accentpink;
+}
