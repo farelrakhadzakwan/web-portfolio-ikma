@@ -57,13 +57,13 @@ export const HeroSection: React.FC = () => {
         </div>
       </div>
 
-      <div className="flex-1 relative flex justify-center items-center min-h-[400px] w-full my-4">
+      <div className="flex-1 relative flex justify-center items-center min-h-[440px] w-full my-4 pr-6">
         {/* Layered Organic Scrapbook Composition */}
         
-        {/* Notes Belakang (Kuning): Kanan atas di belakang foto profil (z-0, rotate-6) */}
+        {/* Notes Belakang (Kuning): Shifted top-right & unclipped so all text & tags are 100% visible */}
         <motion.div 
-          whileHover={{ y: -4, rotate: 8 }}
-          className="absolute top-0 -right-2 md:-right-6 w-48 md:w-52 h-48 bg-yellow-100/95 shadow-md p-4 rotate-6 z-0 border border-yellow-200/90 rounded-xs"
+          whileHover={{ y: -4, rotate: 16 }}
+          className="absolute -top-12 -right-6 md:-right-12 w-52 md:w-56 h-48 bg-yellow-100/95 shadow-md p-4 pl-7 rotate-[14deg] z-0 border border-yellow-200/90 rounded-xs"
         >
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-14 h-4 bg-orange-200/60 backdrop-blur-md -rotate-2 -mt-2 shadow-2xs"></div>
           <p className="handwritten text-textmain mt-2 text-xl leading-snug">
@@ -81,15 +81,15 @@ export const HeroSection: React.FC = () => {
         {/* Small Decorative Stamp (Top-Left Accent Layer) */}
         <motion.div 
           whileHover={{ rotate: -12, scale: 1.05 }}
-          className="absolute top-0 left-2 md:left-4 bg-cream border border-orange-200 text-deeprose font-display text-xs px-3 py-1.5 shadow-sm -rotate-12 z-5 rounded-xs handwritten"
+          className="absolute -top-8 left-0 md:left-2 bg-cream border border-orange-200 text-deeprose font-display text-xs px-3 py-1.5 shadow-sm -rotate-12 z-5 rounded-xs handwritten"
         >
           ♡ personal binder
         </motion.div>
 
-        {/* Foto Profil (Polaroid): Bingkai putih tebal, p-2 pb-10 bg-white, z-10, -rotate-2 */}
+        {/* Foto Profil (Polaroid): Center Anchor, z-10, -rotate-2 */}
         <motion.div 
           whileHover={{ scale: 1.02, rotate: -1 }}
-          className="paper-card p-2 pb-10 w-64 md:w-72 h-80 -rotate-2 relative z-10 flex flex-col items-center justify-between bg-white border border-black/10 shadow-lg"
+          className="paper-card p-2.5 pb-10 w-64 md:w-72 h-80 -rotate-2 relative z-10 flex flex-col items-center justify-between bg-white border border-black/10 shadow-lg"
         >
           <div className="w-full h-56 border border-pink-100 relative overflow-hidden text-center bg-softpink/20 rounded-xs">
             <img 
@@ -102,10 +102,10 @@ export const HeroSection: React.FC = () => {
           <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-5 bg-white/80 backdrop-blur-sm rotate-1 shadow-sm border-t border-b border-white/60"></div>
         </motion.div>
 
-        {/* Notes Depan (Biru/Putih): Menimpa bingkai bawah foto profil (z-20, shadow-md, tanpa menutupi wajah) */}
+        {/* Notes Depan (Biru/Putih): Shifted further bottom-left so photo + handwritten caption are 100% visible */}
         <motion.div 
-          whileHover={{ y: -4, rotate: -8 }}
-          className="absolute -bottom-4 -left-3 md:left-2 w-52 md:w-56 h-36 bg-blue-50/95 shadow-md p-4 -rotate-6 z-20 border border-blue-200/90 rounded-xs"
+          whileHover={{ y: -4, rotate: -10 }}
+          className="absolute -bottom-10 -left-8 md:-left-14 w-52 md:w-56 h-36 bg-blue-50/95 shadow-md p-4 -rotate-8 z-20 border border-blue-200/90 rounded-xs"
         >
            <div className="w-3.5 h-3.5 rounded-full bg-accentpink/40 border border-accentpink/60 absolute top-2 left-2 shadow-2xs"></div>
            <p className="handwritten text-textmain text-lg text-center mt-2 font-medium">
