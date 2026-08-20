@@ -60,18 +60,18 @@ export const HeroSection: React.FC = () => {
       <div className="flex-1 relative flex justify-center items-center min-h-[420px] w-full mt-10 md:mt-24 lg:mt-28">
         {/* Layered Organic Scrapbook Composition */}
 
-        {/* Notes (Kuning): Menempel di kanan atas foto profil (z-20) */}
+        {/* Notes Belakang (Kuning): Di belakang foto profil (z-0), menyembul di kanan atas */}
         <motion.div
-          whileHover={{ y: -4, rotate: 10 }}
-          className="absolute -top-10 md:-top-12 -right-2 md:-right-6 w-56 md:w-64 h-52 bg-yellow-100/95 shadow-lg p-4 pt-5 pl-5 rotate-[8deg] z-20 border border-yellow-200/90 rounded-xs"
+          whileHover={{ y: -4, rotate: 14 }}
+          className="absolute -top-12 md:-top-16 -right-4 md:-right-12 lg:-right-16 w-56 md:w-64 h-56 bg-yellow-100/95 shadow-md p-4 pt-6 pl-16 md:pl-20 rotate-[12deg] z-0 border border-yellow-200/90 rounded-xs flex flex-col items-end text-right"
         >
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-4 bg-orange-200/60 backdrop-blur-md -rotate-2 -mt-2 shadow-2xs"></div>
-          <p className="handwritten text-textmain mt-2 text-2xl leading-snug">
+          <div className="absolute top-0 right-8 w-16 h-4 bg-orange-200/60 backdrop-blur-md -rotate-2 -mt-2 shadow-2xs"></div>
+          <p className="handwritten text-textmain mt-1 text-xl md:text-2xl leading-snug max-w-[180px]">
             currently figuring things out ✿
           </p>
-          <div className="mt-4 flex flex-wrap gap-1.5">
+          <div className="mt-3 flex flex-wrap justify-end gap-1.5 max-w-[190px]">
             {profile.professional_identity?.supporting?.slice(0, 3).map((item, idx) => (
-              <span key={idx} className="text-xs bg-yellow-200/70 px-2 py-0.5 rounded text-textmain font-sans font-medium">
+              <span key={idx} className="text-[11px] md:text-xs bg-yellow-200/80 px-2 py-0.5 rounded text-textmain font-sans font-medium">
                 #{item}
               </span>
             ))}
