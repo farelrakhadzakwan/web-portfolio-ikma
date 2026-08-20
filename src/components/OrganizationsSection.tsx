@@ -1,6 +1,87 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { portfolioData, OrganizationExperience } from '../data/portfolioData';
+
+const OrganizationCard: React.FC<{ org: OrganizationExperience }> = ({ org }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  return (
+    <div 
+      onClick={() => setIsExpanded(!isExpanded)}
+      className="paper-card p-6 bg-paper border border-black/10 shadow-sm relative cursor-pointer transition-all duration-300 hover:shadow-md group"
+    >
+      {/* Top Header: Organization Name, Role, Date/Location & Toggle Button */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between border-b border-black/5 pb-3 mb-3">
+        <div>
+          <h3 className="text-xl font-bold text-textmain font-display flex items-center gap-2">
+            {org.organization}
+          </h3>
+          <p className="text-deeprose text-sm font-semibold mt-0.5">
+            {org.roles ? org.roles.join(' & ') : org.role}
+            {org.division && ` (${org.division})`}
+          </p>
+        </div>
+        
+        <div className="flex items-center gap-3 mt-2 md:mt-0">
+          <div className="text-xs text-textmuted font-medium bg-cream/70 px-3 py-1 rounded border border-orange-100 inline-block">
+            {org.start_date} — {org.end_date} {org.location && `• ${org.location}`}
+          </div>
+          
+          <button 
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsExpanded(!isExpanded);
+            }}
+            className="flex items-center gap-1.5 text-xs font-semibold text-accentpink hover:text-deeprose bg-softpink/40 hover:bg-softpink/60 px-3 py-1 rounded transition-colors"
+          >
+            <span>{isExpanded ? 'Hide Details' : 'View Details'}</span>
+            <motion.span
+              animate={{ rotate: isExpanded ? 180 : 0 }}
+              transition={{ duration: 0.2 }}
+              className="inline-block text-[10px]"
+            >
+              ▼
+            </motion.span>
+          </button>
+        </div>
+      </div>
+
+      {/* Expandable Bullet Points (Achievements) */}
+      <AnimatePresence initial={false}>
+        {isExpanded && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className="overflow-hidden mb-4"
+          >
+            {org.achievements && org.achievements.length > 0 && (
+              <ul className="list-disc list-inside text-sm text-textmuted space-y-2 pt-2 pb-1">
+                {org.achievements.map((ach, i) => (
+                  <li key={i} className="leading-relaxed">
+                    <span>{ach.description}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Bottom Section: Competencies / Skills Badges */}
+      {org.competencies && org.competencies.length > 0 && (
+        <div className="flex flex-wrap gap-1.5 pt-2">
+          {org.competencies.map((comp, i) => (
+            <span key={i} className="text-[11px] bg-softpink/30 text-textmain px-2 py-0.5 rounded border border-pink-100/40">
+              {comp}
+            </span>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
 
 export const OrganizationsSection: React.FC = () => {
   const { organization_experience, key_metrics } = portfolioData;
@@ -38,40 +119,7 @@ export const OrganizationsSection: React.FC = () => {
       {/* Organization Cards List */}
       <div className="space-y-6">
         {organization_experience.map((org: OrganizationExperience, idx: number) => (
-          <div key={idx} className="paper-card p-6 bg-paper border border-black/10 shadow-sm relative">
-            <div className="flex flex-col md:flex-row md:items-center justify-between border-b border-black/5 pb-3 mb-4">
-              <div>
-                <h3 className="text-xl font-bold text-textmain font-display">{org.organization}</h3>
-                <p className="text-deeprose text-sm font-medium">
-                  {org.roles ? org.roles.join(' & ') : org.role}
-                  {org.division && ` (${org.division})`}
-                </p>
-              </div>
-              <div className="text-xs text-textmuted font-medium mt-1 md:mt-0 bg-cream/70 px-3 py-1 rounded border border-orange-100 inline-block self-start md:self-auto">
-                {org.start_date} — {org.end_date} {org.location && `• ${org.location}`}
-              </div>
-            </div>
-
-            {org.achievements && org.achievements.length > 0 && (
-              <ul className="list-disc list-inside text-sm text-textmuted space-y-2 mb-4">
-                {org.achievements.map((ach, i) => (
-                  <li key={i} className="leading-relaxed">
-                    <span>{ach.description}</span>
-                  </li>
-                ))}
-              </ul>
-            )}
-
-            {org.competencies && org.competencies.length > 0 && (
-              <div className="flex flex-wrap gap-1.5 pt-2">
-                {org.competencies.map((comp, i) => (
-                  <span key={i} className="text-[11px] bg-softpink/30 text-textmain px-2 py-0.5 rounded border border-pink-100/40">
-                    {comp}
-                  </span>
-                ))}
-              </div>
-            )}
-          </div>
+          <OrganizationCard key={idx} org={org} />
         ))}
       </div>
     </section>
