@@ -65,10 +65,12 @@ export const HeroSection: React.FC = () => {
           whileHover={{ scale: 1.03, rotate: 1 }}
           className="paper-card p-4 pb-10 w-64 md:w-72 h-80 rotate-2 absolute z-20 flex flex-col items-center justify-between bg-white border border-black/10 shadow-lg"
         >
-          <div className="w-full h-56 bg-softpink/40 border border-pink-100 flex flex-col items-center justify-center relative overflow-hidden p-4 text-center">
-            <span className="text-4xl mb-2">✿</span>
-            <span className="text-sm font-display font-semibold text-deeprose">{profile.name}</span>
-            <span className="text-xs text-textmuted mt-1">{profile.location?.city}, {profile.location?.country}</span>
+          <div className="w-full h-56 border border-pink-100 relative overflow-hidden text-center bg-softpink/20">
+            <img 
+              src="/Client.jpeg" 
+              alt={profile.name} 
+              className="w-full h-full object-cover object-center"
+            />
           </div>
           <span className="handwritten text-textmain text-xl">a little bit of everything ♡</span>
           <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-5 bg-white/80 backdrop-blur-sm rotate-1 shadow-sm border-t border-b border-white/60"></div>
