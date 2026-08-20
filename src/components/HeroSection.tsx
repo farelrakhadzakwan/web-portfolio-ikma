@@ -38,7 +38,7 @@ export const HeroSection: React.FC = () => {
         )}
         
         <p className="text-base md:text-lg text-textmuted max-w-lg leading-relaxed mb-8">
-          {profile.professional_summary}
+          Bridging technology, human resources, and data analysis to coordinate teams, optimize operations, and solve complex organizational challenges.
         </p>
         
         <div className="flex flex-wrap gap-4">
