@@ -57,7 +57,7 @@ export const HeroSection: React.FC = () => {
         </div>
       </div>
 
-      <div className="flex-1 relative flex justify-center items-center min-h-[420px] w-full -mt-2 md:-mt-12 lg:-mt-16">
+      <div className="flex-1 relative flex justify-center items-center min-h-[420px] w-full mt-10 md:mt-24 lg:mt-28">
         {/* Layered Organic Scrapbook Composition */}
 
         {/* Notes Belakang (Kuning): Kanan atas di belakang foto profil */}
