@@ -76,10 +76,10 @@ export const HeroSection: React.FC = () => {
           <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-5 bg-white/80 backdrop-blur-sm rotate-1 shadow-sm border-t border-b border-white/60"></div>
         </motion.div>
 
-        {/* Sticky Note 1 */}
+        {/* Sticky Note 1 (positioned behind Polaroid card) */}
         <motion.div 
-          whileHover={{ y: -4, rotate: 8 }}
-          className="absolute right-2 md:right-6 top-4 w-44 h-44 bg-yellow-100/90 shadow-md p-4 rotate-6 z-30 border border-yellow-200"
+          whileHover={{ y: -4, rotate: 12 }}
+          className="absolute -right-2 md:-right-6 -top-4 w-44 h-44 bg-yellow-100/90 shadow-sm p-4 rotate-12 z-10 border border-yellow-200"
         >
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-4 bg-orange-200/50 backdrop-blur-md -rotate-2 -mt-2"></div>
           <p className="handwritten text-textmain mt-2 text-xl leading-snug">
