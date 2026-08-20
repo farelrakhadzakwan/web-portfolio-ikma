@@ -81,7 +81,7 @@ export const HeroSection: React.FC = () => {
         {/* Small Decorative Stamp (Top-Left Accent Layer) */}
         <motion.div
           whileHover={{ rotate: -12, scale: 1.05 }}
-          className="absolute -top-4 left-0 md:left-2 bg-cream border border-orange-200 text-deeprose font-display text-xs md:text-sm px-3.5 py-1.5 shadow-sm -rotate-12 z-5 rounded-xs handwritten"
+          className="absolute -top-6 -left-4 md:-left-8 bg-cream border border-orange-200 text-deeprose text-sm md:text-base px-4 py-1.5 shadow-md -rotate-12 z-20 rounded-xs handwritten font-semibold"
         >
           ♡ personal binder
         </motion.div>
