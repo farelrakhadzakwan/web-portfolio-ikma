@@ -100,26 +100,15 @@ work_experience:
     role: "Human Resources"
 
     responsibilities:
-      - "Supported HR administration."
-      - "Managed employee data."
-      - "Supported recruitment activities."
-      - "Supported employee onboarding."
-      - "Managed employee documentation."
-      - "Assisted with attendance administration."
-      - "Assisted with leave administration."
-      - "Assisted with overtime administration."
-      - "Assisted with training administration."
-      - "Supported HR reporting."
-      - "Coordinated with internal teams."
+      - "Managed end-to-end HR administration, including employee data, attendance, leave, overtime, and training."
+      - "Supported recruitment activities and seamless employee onboarding processes."
+      - "Prepared periodic HR documentation and administrative reporting."
+      - "Coordinated cross-functionally with internal teams to maintain operational efficiency."
 
     functional_areas:
-      - "Human Resources"
       - "HR Administration"
+      - "Recruitment & Onboarding"
       - "Employee Data Management"
-      - "Recruitment"
-      - "Onboarding"
-      - "HR Documentation"
-      - "HR Reporting"
       - "Internal Coordination"
 
   - company: "PT. Dibimbing"
@@ -130,24 +119,15 @@ work_experience:
     role: "Class Manager Cyber Security Bootcamp"
 
     responsibilities:
-      - "Managed day-to-day class operations."
-      - "Managed attendance."
-      - "Monitored LMS activities."
-      - "Monitored student progress."
-      - "Managed class administration."
-      - "Coordinated communication between students, mentors, and internal teams."
-      - "Supported learning activities."
-      - "Supported assignments."
-      - "Supported student engagement."
+      - "Oversee day-to-day class operations, LMS activities, attendance tracking, and administration."
+      - "Monitor student progress, support assignment completion, and foster active learning engagement."
+      - "Facilitate seamless communication and coordination between students, mentors, and internal teams."
 
     functional_areas:
       - "Class Operations"
-      - "Administration"
       - "Learning Management"
       - "Student Progress Monitoring"
-      - "Communication"
-      - "Coordination"
-      - "Stakeholder Management"
+      - "Stakeholder Coordination"
 
 # ============================================================
 # PROJECTS
