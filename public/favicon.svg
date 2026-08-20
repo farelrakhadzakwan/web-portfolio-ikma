@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <defs>
+    <!-- Soft Pink Gradient for Petals -->
+    <linearGradient id="sakura-petal-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF0F5" />
+      <stop offset="35%" stop-color="#FBCFE8" />
+      <stop offset="80%" stop-color="#F472B6" />
+      <stop offset="100%" stop-color="#DB2777" />
+    </linearGradient>
+
+    <!-- Center Glow Gradient -->
+    <radialGradient id="center-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#F43F5E" />
+      <stop offset="60%" stop-color="#FB7185" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#FBCFE8" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Golden Stamen Center -->
+    <radialGradient id="gold-core" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FEF08A" />
+      <stop offset="50%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#D97706" />
+    </radialGradient>
+
+    <!-- Single Sakura Petal with Cleft Notch at Top -->
+    <g id="petal">
+      <path d="M 50 50 
+               C 38 35, 30 20, 42 7 
+               C 45 4, 48 3, 50 7 
+               C 52 3, 55 4, 58 7 
+               C 70 20, 62 35, 50 50 Z" 
+            fill="url(#sakura-petal-grad)" 
+            stroke="#DB2777" 
+            stroke-width="0.75" 
+            stroke-opacity="0.4" />
+      <!-- Soft Inner Petal Vein Accent -->
+      <path d="M 50 48 C 50 38, 49 24, 50 12" 
+            stroke="#E11D48" 
+            stroke-width="0.8" 
+            stroke-opacity="0.3" 
+            stroke-dasharray="1 2" 
+            stroke-linecap="round" />
+    </g>
+  </defs>
+
+  <!-- 5 Rotated Sakura Petals -->
+  <use href="#petal" transform="rotate(0 50 50)" />
+  <use href="#petal" transform="rotate(72 50 50)" />
+  <use href="#petal" transform="rotate(144 50 50)" />
+  <use href="#petal" transform="rotate(216 50 50)" />
+  <use href="#petal" transform="rotate(288 50 50)" />
+
+  <!-- Inner Deep Rose Radial Glow -->
+  <circle cx="50" cy="50" r="18" fill="url(#center-glow)" />
+
+  <!-- Center Golden Core -->
+  <circle cx="50" cy="50" r="6.5" fill="url(#gold-core)" stroke="#B45309" stroke-width="0.5" />
+
+  <!-- Delicate Golden Stamens -->
+  <g stroke="#F59E0B" stroke-width="1" stroke-linecap="round">
+    <line x1="50" y1="50" x2="50" y2="36" />
+    <circle cx="50" cy="35" r="1.2" fill="#FEF08A" stroke="none" />
+
+    <line x1="50" y1="50" x2="63" y2="44" />
+    <circle cx="64" cy="43.5" r="1.2" fill="#FEF08A" stroke="none" />
+
+    <line x1="50" y1="50" x2="58" y2="60" />
+    <circle cx="58.8" cy="61" r="1.2" fill="#FEF08A" stroke="none" />
+
+    <line x1="50" y1="50" x2="42" y2="60" />
+    <circle cx="41.2" cy="61" r="1.2" fill="#FEF08A" stroke="none" />
+
+    <line x1="50" y1="50" x2="37" y2="44" />
+    <circle cx="36" cy="43.5" r="1.2" fill="#FEF08A" stroke="none" />
+
+    <line x1="50" y1="50" x2="56" y2="39" />
+    <circle cx="56.8" cy="38" r="1" fill="#FFF" stroke="none" />
+
+    <line x1="50" y1="50" x2="60" y2="52" />
+    <circle cx="61" cy="52.2" r="1" fill="#FFF" stroke="none" />
+
+    <line x1="50" y1="50" x2="44" y2="52" />
+    <circle cx="43" cy="52.2" r="1" fill="#FFF" stroke="none" />
+
+    <line x1="50" y1="50" x2="44" y2="39" />
+    <circle cx="43.2" cy="38" r="1" fill="#FFF" stroke="none" />
+  </g>
+</svg>
