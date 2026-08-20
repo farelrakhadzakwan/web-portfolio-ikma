@@ -5,12 +5,6 @@ import { portfolioData, WorkExperience } from '../data/portfolioData';
 export const ExperienceSection: React.FC = () => {
   const { work_experience } = portfolioData;
 
-  const getTagForRole = (role: string) => {
-    if (role.toLowerCase().includes('hr') || role.toLowerCase().includes('human resources')) return 'HR';
-    if (role.toLowerCase().includes('class manager')) return 'CLASS MANAGER';
-    return 'COORDINATION';
-  };
-
   return (
     <section className="relative pt-12" id="experience">
       <div className="flex items-center gap-3 mb-10">
@@ -20,7 +14,6 @@ export const ExperienceSection: React.FC = () => {
 
       <div className="relative space-y-10 before:absolute before:inset-0 before:left-4 md:before:left-1/2 before:-translate-x-px before:h-full before:w-0.5 before:bg-gradient-to-b before:from-blush before:via-accentpink before:to-blush">
         {work_experience.map((exp: WorkExperience, index: number) => {
-          const tag = getTagForRole(exp.role);
           const isEven = index % 2 === 0;
 
           return (
@@ -38,10 +31,6 @@ export const ExperienceSection: React.FC = () => {
                   isEven ? 'rotate-1' : '-rotate-1'
                 } bg-paper border border-black/10 shadow-md relative`}
               >
-                {/* Binder Tag */}
-                <div className={`absolute -top-3 ${isEven ? '-right-2 rotate-3' : '-left-2 -rotate-3'} bg-yellow-100 px-2.5 py-0.5 shadow-sm text-xs font-bold tracking-wider text-textmain border border-yellow-300`}>
-                  {tag}
-                </div>
 
                 <h3 className="text-xl font-bold text-textmain font-display mb-1">{exp.role}</h3>
                 <p className="text-deeprose font-semibold text-sm mb-3">
