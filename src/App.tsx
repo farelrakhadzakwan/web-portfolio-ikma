@@ -36,7 +36,7 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen relative overflow-hidden py-6 md:py-12 pl-0 sm:pl-2 md:pl-4 pr-16 md:pr-28 flex justify-start bg-[#FFF8FB]">
+    <div className="min-h-screen relative overflow-hidden py-6 md:py-12 pl-2 sm:pl-4 md:pl-6 pr-28 sm:pr-32 md:pr-36 flex justify-start bg-[#FFF8FB]">
       
       {/* Soft Glow Background Ambience */}
       <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-0 overflow-hidden">
@@ -48,7 +48,7 @@ function App() {
       <BinderNavigation activeSection={activeSection} setActiveSection={setActiveSection} />
 
       {/* Main Binder Container */}
-      <div className="relative w-full max-w-5xl z-10 flex flex-col md:flex-row shadow-2xl rounded-r-2xl rounded-l-md bg-[#DFD3D8] border border-[#C5B4BA] ml-0 sm:ml-1 md:ml-2">
+      <div className="relative w-full max-w-full z-10 flex flex-col md:flex-row shadow-2xl rounded-r-2xl rounded-l-md bg-[#DFD3D8] border border-[#C5B4BA]">
         
         {/* Binder Spine (Left Side) */}
         <div className="hidden md:flex flex-col w-12 bg-[#B89B9D] rounded-l-md items-center py-16 justify-between border-r-2 border-[#8E767A] z-20 shadow-[-2px_0_4px_rgba(0,0,0,0.1)] shrink-0">
