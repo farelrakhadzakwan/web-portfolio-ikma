@@ -60,10 +60,10 @@ export const HeroSection: React.FC = () => {
       <div className="flex-1 relative flex justify-center items-center min-h-[420px] w-full mt-10 md:mt-24 lg:mt-28">
         {/* Layered Organic Scrapbook Composition */}
 
-        {/* Notes Belakang (Kuning): Kanan atas di belakang foto profil */}
+        {/* Notes (Kuning): Menempel di kanan atas foto profil (z-20) */}
         <motion.div
-          whileHover={{ y: -4, rotate: 16 }}
-          className="absolute -top-4 md:-top-6 -right-8 md:-right-20 w-56 md:w-60 h-52 bg-yellow-100/95 shadow-md p-4 pt-5 pl-8 rotate-[14deg] z-0 border border-yellow-200/90 rounded-xs"
+          whileHover={{ y: -4, rotate: 10 }}
+          className="absolute -top-10 md:-top-12 -right-2 md:-right-6 w-56 md:w-64 h-52 bg-yellow-100/95 shadow-lg p-4 pt-5 pl-5 rotate-[8deg] z-20 border border-yellow-200/90 rounded-xs"
         >
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-4 bg-orange-200/60 backdrop-blur-md -rotate-2 -mt-2 shadow-2xs"></div>
           <p className="handwritten text-textmain mt-2 text-2xl leading-snug">
@@ -89,7 +89,7 @@ export const HeroSection: React.FC = () => {
         {/* Foto Profil (Polaroid): Enlarged proportionally, center anchor */}
         <motion.div
           whileHover={{ scale: 1.02, rotate: -1 }}
-          className="paper-card p-3 pb-12 w-72 md:w-80 lg:w-[340px] h-[410px] md:h-[430px] -rotate-2 relative z-10 flex flex-col items-center justify-between bg-white border border-black/10 shadow-xl"
+          className="paper-card p-3 pb-12 w-72 md:w-80 lg:w-[340px] h-[410px] md:h-[430px] -rotate-2 relative z-10 flex flex-col items-center justify-between bg-white border border-black/10 shadow-xl -ml-6 md:-ml-12"
         >
           <div className="w-full h-72 md:h-[310px] border border-pink-100 relative overflow-hidden text-center bg-softpink/20 rounded-xs">
             <img
