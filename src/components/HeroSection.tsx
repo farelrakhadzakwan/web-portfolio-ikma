@@ -16,9 +16,9 @@ export const HeroSection: React.FC = () => {
   };
 
   return (
-    <section className="relative min-h-[65vh] flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-12 pt-1" id="hero">
+    <section className="relative min-h-[60vh] flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 pt-2" id="hero">
 
-      <div className="flex-1 relative">
+      <div className="flex-1 relative flex flex-col justify-center my-auto">
         <motion.div
           initial={{ rotate: -5, opacity: 0 }}
           animate={{ rotate: -2, opacity: 1 }}
@@ -57,7 +57,7 @@ export const HeroSection: React.FC = () => {
         </div>
       </div>
 
-      <div className="flex-1 relative flex justify-center items-center min-h-[480px] w-full my-2">
+      <div className="flex-1 relative flex justify-center items-center min-h-[440px] w-full my-auto">
         {/* Layered Organic Scrapbook Composition */}
 
         {/* Notes Belakang (Kuning): Kanan atas di belakang foto profil */}
