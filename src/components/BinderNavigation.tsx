@@ -20,6 +20,10 @@ export const BinderNavigation: React.FC<BinderNavigationProps> = ({ activeSectio
 
   const scrollToSection = (id: string) => {
     setActiveSection(id);
+    if (id === 'hero') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
