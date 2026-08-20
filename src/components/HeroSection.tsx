@@ -16,9 +16,9 @@ export const HeroSection: React.FC = () => {
   };
 
   return (
-    <section className="relative min-h-[60vh] flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 pt-2" id="hero">
+    <section className="relative min-h-[60vh] flex flex-col md:flex-row items-start justify-between gap-8 md:gap-12 pt-2" id="hero">
 
-      <div className="flex-1 relative flex flex-col justify-center my-auto">
+      <div className="flex-1 relative flex flex-col justify-start">
         <motion.div
           initial={{ rotate: -5, opacity: 0 }}
           animate={{ rotate: -2, opacity: 1 }}
@@ -57,13 +57,13 @@ export const HeroSection: React.FC = () => {
         </div>
       </div>
 
-      <div className="flex-1 relative flex justify-center items-center min-h-[440px] w-full my-auto">
+      <div className="flex-1 relative flex justify-center items-center min-h-[420px] w-full -mt-2 md:-mt-12 lg:-mt-16">
         {/* Layered Organic Scrapbook Composition */}
 
         {/* Notes Belakang (Kuning): Kanan atas di belakang foto profil */}
         <motion.div
           whileHover={{ y: -4, rotate: 16 }}
-          className="absolute -top-12 -right-8 md:-right-20 w-56 md:w-60 h-52 bg-yellow-100/95 shadow-md p-4 pt-5 pl-8 rotate-[14deg] z-0 border border-yellow-200/90 rounded-xs"
+          className="absolute -top-4 md:-top-6 -right-8 md:-right-20 w-56 md:w-60 h-52 bg-yellow-100/95 shadow-md p-4 pt-5 pl-8 rotate-[14deg] z-0 border border-yellow-200/90 rounded-xs"
         >
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-4 bg-orange-200/60 backdrop-blur-md -rotate-2 -mt-2 shadow-2xs"></div>
           <p className="handwritten text-textmain mt-2 text-2xl leading-snug">
