@@ -31,7 +31,6 @@ profile:
     country: "Indonesia"
 
   contact:
-    phone: "081358357202"
     email: "ikmalunisaa11@gmail.com"
     linkedin: "www.linkedin.com/in/ikmalunisaannora"
     portfolio: "portofolio"
@@ -70,7 +69,7 @@ education:
     degree: "Bachelor Degree"
     field: "Information Technology Education"
     start_date: "2022-08"
-    end_date: "2026-07"
+    end_date: "July 2026"
     gpa: "3.83/4.00"
 
     highlights:
@@ -114,7 +113,7 @@ work_experience:
   - company: "PT. Dibimbing"
     location: null
     employment_type: null
-    start_date: "2025-02"
+    start_date: "February 2025"
     end_date: "Present"
     role: "Class Manager Cyber Security Bootcamp"
 

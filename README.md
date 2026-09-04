@@ -45,7 +45,7 @@ MasterContent.yml  ──(Raw Import & js-yaml Parser)──>  src/data/portfoli
 5. **Organizations Section**: Metric achievement stickers highlighting leadership (**20+ organizations**, **8 staff coordinated**, **120+ excursion participants**, **30+ international participants**).
 6. **Skills & Binder Index**: Interactive 6-category binder index (`01 Technology`, `02 Data & Analytics`, `03 HR`, `04 Management`, `05 Communication`, `06 Tools & Soft Skills`).
 7. **Education & Certifications**: Brawijaya University GPA (**3.83 / 4.00**) styled with a Summa Cum Laude stamp and Trust Training Partners document sleeve.
-8. **Contact Section**: Accessible buttons for Email (`ikmalunisaa11@gmail.com`), LinkedIn, and Phone.
+8. **Contact Section**: Accessible buttons for Email (`ikmalunisaa11@gmail.com`) and LinkedIn.
 
 ---
 

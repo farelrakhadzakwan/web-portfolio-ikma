@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, Linkedin, Phone } from 'lucide-react';
+import { Mail, Linkedin } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
 export const ContactSection: React.FC = () => {
@@ -43,19 +43,6 @@ export const ContactSection: React.FC = () => {
             </div>
             <span className="font-semibold text-xs md:text-sm text-textmain">{contact.linkedin}</span>
             <span className="text-[10px] text-textmuted uppercase tracking-wider">LinkedIn</span>
-          </a>
-        )}
-
-        {contact?.phone && (
-          <a
-            href={`tel:${contact.phone}`}
-            className="flex flex-col items-center gap-2 group cursor-pointer"
-          >
-            <div className="w-16 h-16 bg-white rounded-full shadow-md border border-pink-100 flex items-center justify-center group-hover:-translate-y-1.5 transition-transform text-textmain group-hover:text-accentpink group-hover:shadow-lg">
-              <Phone size={24} />
-            </div>
-            <span className="font-semibold text-xs md:text-sm text-textmain">{contact.phone}</span>
-            <span className="text-[10px] text-textmuted uppercase tracking-wider">Phone</span>
           </a>
         )}
       </div>
