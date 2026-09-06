@@ -21,5 +21,9 @@ dist-isolation
 *.suo
 *.ntvs
 *.njsproj
-*.sln
 *.sw?
+
+# Raw assets / temporary source files
+/PortfolioPPT_OrganizationExperienceSkills/
+/CV 2026 Ikmalunisa Annora.pdf
+/Client.jpeg

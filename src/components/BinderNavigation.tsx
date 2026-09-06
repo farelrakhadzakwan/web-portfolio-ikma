@@ -1,4 +1,5 @@
 import React from 'react';
+import { Download } from 'lucide-react';
 
 interface BinderNavigationProps {
   activeSection: string;
@@ -48,6 +49,20 @@ export const BinderNavigation: React.FC<BinderNavigationProps> = ({ activeSectio
           </button>
         );
       })}
+
+      <a
+        href="/CV%202026%20Ikmalunisa%20Annora.pdf"
+        download="CV 2026 Ikmalunisa Annora.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        id="download-cv-tab"
+        className="px-3 py-1.5 rounded-r-md text-xs md:text-sm font-semibold tracking-wide border-t border-r border-b border-white/50 shadow-md transition-all duration-300 text-left bg-blush/90 text-textmain hover:bg-accentpink hover:text-white hover:translate-x-1 flex items-center justify-between gap-2 group cursor-pointer"
+        title="Download CV"
+      >
+        <span>CV</span>
+        <Download size={13} className="shrink-0 opacity-70 group-hover:opacity-100 transition-opacity" />
+      </a>
     </nav>
   );
 };
+
