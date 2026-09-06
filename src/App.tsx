@@ -9,9 +9,11 @@ import { SkillsSection } from './components/SkillsSection';
 import { EducationSection } from './components/EducationSection';
 import { CertificationsSection } from './components/CertificationsSection';
 import { ContactSection } from './components/ContactSection';
+import { CVModal } from './components/CVModal';
 
 function App() {
   const [activeSection, setActiveSection] = useState('hero');
+  const [isCVModalOpen, setIsCVModalOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,7 +47,14 @@ function App() {
       </div>
 
       {/* Binder Tab Navigation */}
-      <BinderNavigation activeSection={activeSection} setActiveSection={setActiveSection} />
+      <BinderNavigation
+        activeSection={activeSection}
+        setActiveSection={setActiveSection}
+        onOpenCVModal={() => setIsCVModalOpen(true)}
+      />
+
+      {/* CV PDF Preview Modal */}
+      <CVModal isOpen={isCVModalOpen} onClose={() => setIsCVModalOpen(false)} />
 
       {/* Main Binder Container */}
       <div className="relative w-full max-w-full z-10 flex flex-col md:flex-row shadow-2xl rounded-r-2xl rounded-l-md bg-[#DFD3D8] border border-[#C5B4BA]">

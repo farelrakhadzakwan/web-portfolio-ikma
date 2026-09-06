@@ -46,6 +46,7 @@ MasterContent.yml  ──(Raw Import & js-yaml Parser)──>  src/data/portfoli
 6. **Skills & Binder Index**: Interactive 6-category binder index (`01 Technology`, `02 Data & Analytics`, `03 HR`, `04 Management`, `05 Communication`, `06 Tools & Soft Skills`).
 7. **Education & Certifications**: Brawijaya University GPA (**3.83 / 4.00**) styled with a Summa Cum Laude stamp and Trust Training Partners document sleeve.
 8. **Contact Section**: Accessible buttons for Email (`ikmalunisaa11@gmail.com`) and LinkedIn.
+9. **Interactive CV Modal & Viewer**: Quick-access **CV** tab with eye icon on the right binder navigation. Clicking triggers a sleek, responsive Framer Motion pop-up window embedding the official 2026 CV PDF, complete with direct download and new-tab options.
 
 ---
 
@@ -88,15 +89,20 @@ web-portfolio-ikma/
 ├── MasterContent.yml         # Single Source of Truth (SSOT) content database
 ├── index.html                # Main HTML entry with Google Fonts
 ├── package.json              # Project dependencies & scripts
+├── public/                   # Static assets (CV 2026 PDF, favicon, profile image)
+│   ├── CV 2026 Ikmalunisa Annora.pdf
+│   ├── Client.jpeg
+│   └── favicon.svg
 ├── tailwind.config.js        # Theme colors, fonts, paper shadow extensions
 ├── vite.config.ts            # Vite configuration
 └── src/
-    ├── App.tsx               # Main binder layout container & smooth scroll observer
+    ├── App.tsx               # Main binder layout container, scroll observer & CV modal state
     ├── index.css             # Tailwind directives & paper texture utility styles
     ├── main.tsx              # React DOM render entry point
     ├── vite-env.d.ts         # Module declaration for YAML raw imports
     ├── components/           # Reusable scrapbook UI components
     │   ├── BinderNavigation.tsx
+    │   ├── CVModal.tsx       # PDF viewer modal with download & external tab actions
     │   ├── HeroSection.tsx
     │   ├── AboutSection.tsx
     │   ├── ExperienceSection.tsx

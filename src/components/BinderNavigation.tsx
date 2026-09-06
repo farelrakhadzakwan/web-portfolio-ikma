@@ -1,12 +1,17 @@
 import React from 'react';
-import { Download } from 'lucide-react';
+import { Eye } from 'lucide-react';
 
 interface BinderNavigationProps {
   activeSection: string;
   setActiveSection: (section: string) => void;
+  onOpenCVModal: () => void;
 }
 
-export const BinderNavigation: React.FC<BinderNavigationProps> = ({ activeSection, setActiveSection }) => {
+export const BinderNavigation: React.FC<BinderNavigationProps> = ({
+  activeSection,
+  setActiveSection,
+  onOpenCVModal,
+}) => {
   const sections = [
     { id: 'hero', label: 'Home' },
     { id: 'about', label: 'About' },
@@ -50,19 +55,17 @@ export const BinderNavigation: React.FC<BinderNavigationProps> = ({ activeSectio
         );
       })}
 
-      <a
-        href="/CV%202026%20Ikmalunisa%20Annora.pdf"
-        download="CV 2026 Ikmalunisa Annora.pdf"
-        target="_blank"
-        rel="noopener noreferrer"
-        id="download-cv-tab"
+      <button
+        onClick={onOpenCVModal}
+        id="view-cv-tab"
         className="px-3 py-1.5 rounded-r-md text-xs md:text-sm font-semibold tracking-wide border-t border-r border-b border-white/50 shadow-md transition-all duration-300 text-left bg-blush/90 text-textmain hover:bg-accentpink hover:text-white hover:translate-x-1 flex items-center justify-between gap-2 group cursor-pointer"
-        title="Download CV"
+        title="View CV"
       >
         <span>CV</span>
-        <Download size={13} className="shrink-0 opacity-70 group-hover:opacity-100 transition-opacity" />
-      </a>
+        <Eye size={14} className="shrink-0 opacity-70 group-hover:opacity-100 transition-opacity" />
+      </button>
     </nav>
   );
 };
+
 
