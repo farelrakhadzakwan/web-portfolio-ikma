@@ -45,8 +45,10 @@ MasterContent.yml  ──(Raw Import & js-yaml Parser)──>  src/data/portfoli
 5. **Organizations Section**: Metric achievement stickers highlighting leadership (**20+ organizations**, **8 staff coordinated**, **120+ excursion participants**, **30+ international participants**).
 6. **Skills & Binder Index**: Interactive 6-category binder index (`01 Technology`, `02 Data & Analytics`, `03 HR`, `04 Management`, `05 Communication`, `06 Tools & Soft Skills`).
 7. **Education & Certifications**: Brawijaya University GPA (**3.83 / 4.00**) styled with a Summa Cum Laude stamp and Trust Training Partners document sleeve.
-8. **Contact Section**: Accessible buttons for Email (`ikmalunisaa11@gmail.com`) and LinkedIn.
-9. **Interactive CV Modal & Viewer**: Quick-access **CV** tab with eye icon on the right binder navigation. Clicking triggers a sleek, responsive Framer Motion pop-up window embedding the official 2026 CV PDF, complete with direct download and new-tab options.
+8. **Certifications & Training**: Verified professional credentials in HR & project leadership.
+9. **Gallery & Activities Section**: Interactive slideshow showcase and scrapbook album displaying 13 presentation slides covering organizational achievements (BEM FILKOM, LPM DISPLAY, DEVGIRLS, GEMASTIK XVI), public speaking engagements (MC & Moderator), and official certificates with fullscreen lightbox zoom.
+10. **Contact Section**: Accessible buttons for Email (`ikmalunisaa11@gmail.com`) and LinkedIn.
+11. **Interactive CV Modal & Viewer**: Quick-access **CV** tab with eye icon on the right binder navigation. Clicking triggers a sleek, responsive Framer Motion pop-up window embedding the official 2026 CV PDF, complete with direct download and new-tab options.
 
 ---
 
@@ -89,10 +91,11 @@ web-portfolio-ikma/
 ├── MasterContent.yml         # Single Source of Truth (SSOT) content database
 ├── index.html                # Main HTML entry with Google Fonts
 ├── package.json              # Project dependencies & scripts
-├── public/                   # Static assets (CV 2026 PDF, favicon, profile image)
+├── public/                   # Static assets (CV 2026 PDF, favicon, profile image, slide gallery)
 │   ├── CV 2026 Ikmalunisa Annora.pdf
 │   ├── Client.jpeg
-│   └── favicon.svg
+│   ├── favicon.svg
+│   └── gallery/              # 13 Portfolio presentation slide PNGs (1.png - 13.png)
 ├── tailwind.config.js        # Theme colors, fonts, paper shadow extensions
 ├── vite.config.ts            # Vite configuration
 └── src/
@@ -111,6 +114,7 @@ web-portfolio-ikma/
     │   ├── SkillsSection.tsx
     │   ├── EducationSection.tsx
     │   ├── CertificationsSection.tsx
+    │   ├── GallerySection.tsx # Interactive slide showcase & album grid
     │   └── ContactSection.tsx
     └── data/
         └── portfolioData.ts  # Typed accessor layer parsing MasterContent.yml

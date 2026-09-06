@@ -21,6 +21,7 @@ export const BinderNavigation: React.FC<BinderNavigationProps> = ({
     { id: 'skills', label: 'Skills' },
     { id: 'education', label: 'Education' },
     { id: 'certifications', label: 'Certifications' },
+    { id: 'gallery', label: 'Gallery' },
     { id: 'contact', label: 'Contact' },
   ];
 

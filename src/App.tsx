@@ -8,6 +8,7 @@ import { OrganizationsSection } from './components/OrganizationsSection';
 import { SkillsSection } from './components/SkillsSection';
 import { EducationSection } from './components/EducationSection';
 import { CertificationsSection } from './components/CertificationsSection';
+import { GallerySection } from './components/GallerySection';
 import { ContactSection } from './components/ContactSection';
 import { CVModal } from './components/CVModal';
 
@@ -17,7 +18,7 @@ function App() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['hero', 'about', 'experience', 'projects', 'organizations', 'skills', 'education', 'certifications', 'contact'];
+      const sections = ['hero', 'about', 'experience', 'projects', 'organizations', 'skills', 'education', 'certifications', 'gallery', 'contact'];
       const scrollPosition = window.scrollY + 200;
 
       for (const sec of sections) {
@@ -83,6 +84,7 @@ function App() {
             <SkillsSection />
             <EducationSection />
             <CertificationsSection />
+            <GallerySection />
             <ContactSection />
           </div>
         </div>
