@@ -29,21 +29,21 @@ Dokumentasi ini menjelaskan implementasi section baru **Gallery & Activities** y
    - **Slide 13**: *Thank You* (Closing Slide)
 
 3. **Fitur & Interaktivitas UI ([GallerySection.tsx](file:///home/noob/Projects/WebPortfolioIkma/src/components/GallerySection.tsx))**:
+   - **Ukuran Pas Layar Desktop (*Desktop-Fitted Layout*)**:
+     - Kontainer showcase dibatasi secara proporsional (`max-w-2xl` / `max-w-3xl`) dengan tinggi maksimal 16:9 yang pas di layar laptop/desktop standar (tinggi slide ~330px - 390px).
+     - Tidak lagi memanjang berlebihan ke bawah; seluruh komponen (Header, Slide, Kontrol, dan Pita Thumbnail) langsung muat dalam satu bidang pandang (*viewport*).
+   - **Animasi Auto-Slide saat Idle (Otomatis Bergeser ke Kanan)**:
+     - Jika pengguna tidak menekan tombol panah kiri atau kanan, slide otomatis bergeser ke kanan setiap **4.5 detik**.
+     - **Smart Pause saat Hover**: Ketika kursor mouse diarahkan ke slide, putaran otomatis otomatis dijeda agar pengguna dapat membaca teks slide tanpa tergeser tiba-tiba.
+     - **Indikator Progres**: Terdapat garis progres halus di bagian bawah slide yang menunjukkan hitungan mundur perpindahan slide.
+     - **Tombol Kontrol Auto/Jeda**: Pengguna dapat mematikan atau mengaktifkan kembali auto-slide kapan saja via tombol di sebelah filter kategori.
    - **Filter Kategori Cepat**: Tombol filter pil (*All (13)*, *Organization (5)*, *Public Speaking (3)*, *Certificates (1)*, *Overview (4)*).
-   - **Featured Showcase Viewer**:
-     - Menampilkan slide aktif dalam ukuran besar dengan rasio 16:9.
-     - Kontrol panah Sebelumnya (*Left*) dan Selanjutnya (*Right*).
-     - Indikator nomor slide (contoh: `Slide 3 of 13`) dan keterangan ringkas.
-     - Animasi transisi lembut antar slide via *Framer Motion*.
-   - **Album Grid / Thumbnail Strip**:
-     - Kartu miniatur bernuansa scrapbook dengan aksen selotip washi tape.
-     - Penanda nomor slide (`#1`, `#2`, dst.) dan judul.
-     - Efek visual hover dan highlight border saat slide terpilih.
-     - Klik pada thumbnail mana pun akan langsung mengaktifkan slide di viewer utama.
+   - **Pita Thumbnail Horizontal & Toggle Grid**:
+     - Thumbnail 13 slide disusun secara ringkas dalam pita geser horizontal (*filmstrip*) tepat di bawah slide.
+     - Terdapat opsi "Lihat Semua Grid" jika pengunjung ingin membuka tampilan album penuh.
    - **Lightbox / Fullscreen Zoom Modal**:
      - Pengunjung dapat mengklik gambar atau tombol "Perbesar" untuk membuka tampilan resolusi penuh dengan latar belakang redup (*backdrop blur*).
      - Mendukung navigasi keyboard: panah kiri/kanan (`←` / `→`) untuk berpindah slide, dan tombol `Escape (Esc)` untuk menutup.
-     - Tombol buka gambar asli di tab baru.
 
 ---
 

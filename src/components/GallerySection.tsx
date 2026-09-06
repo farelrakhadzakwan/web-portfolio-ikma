@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   ChevronLeft,
@@ -11,6 +11,9 @@ import {
   Award,
   Layers,
   ExternalLink,
+  Play,
+  Pause,
+  Grid,
 } from 'lucide-react';
 
 export interface GallerySlide {
@@ -143,10 +146,36 @@ export const gallerySlides: GallerySlide[] = [
   }
 ];
 
+const slideVariants = {
+  initial: (direction: 'left' | 'right') => ({
+    opacity: 0,
+    x: direction === 'right' ? 35 : -35,
+    scale: 0.98,
+  }),
+  animate: {
+    opacity: 1,
+    x: 0,
+    scale: 1,
+    transition: { duration: 0.3, ease: 'easeOut' },
+  },
+  exit: (direction: 'left' | 'right') => ({
+    opacity: 0,
+    x: direction === 'right' ? -35 : 35,
+    scale: 0.98,
+    transition: { duration: 0.2, ease: 'easeIn' },
+  }),
+};
+
 export const GallerySection: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [currentSlideIndex, setCurrentSlideIndex] = useState<number>(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState<boolean>(false);
+  const [isAutoPlay, setIsAutoPlay] = useState<boolean>(true);
+  const [isHovered, setIsHovered] = useState<boolean>(false);
+  const [slideDirection, setSlideDirection] = useState<'left' | 'right'>('right');
+  const [showFullGrid, setShowFullGrid] = useState<boolean>(false);
+
+  const thumbnailContainerRef = useRef<HTMLDivElement>(null);
 
   const categories = [
     { label: 'All', icon: Layers, count: gallerySlides.length },
@@ -163,14 +192,44 @@ export const GallerySection: React.FC = () => {
   const activeSlide = gallerySlides[currentSlideIndex] || gallerySlides[0];
 
   const handlePrev = () => {
+    setSlideDirection('left');
     setCurrentSlideIndex((prev) => (prev > 0 ? prev - 1 : gallerySlides.length - 1));
   };
 
   const handleNext = () => {
+    setSlideDirection('right');
     setCurrentSlideIndex((prev) => (prev < gallerySlides.length - 1 ? prev + 1 : 0));
   };
 
-  // Keyboard navigation for lightbox & main carousel
+  const handleSelectSlide = (targetIndex: number) => {
+    if (targetIndex === currentSlideIndex) return;
+    setSlideDirection(targetIndex > currentSlideIndex ? 'right' : 'left');
+    setCurrentSlideIndex(targetIndex);
+  };
+
+  // Idle Auto-slide timer (4 seconds per slide when not hovered and lightbox is closed)
+  useEffect(() => {
+    if (!isAutoPlay || isHovered || isLightboxOpen) return;
+
+    const interval = setInterval(() => {
+      setSlideDirection('right');
+      setCurrentSlideIndex((prev) => (prev < gallerySlides.length - 1 ? prev + 1 : 0));
+    }, 4500);
+
+    return () => clearInterval(interval);
+  }, [isAutoPlay, isHovered, isLightboxOpen, currentSlideIndex]);
+
+  // Keep active thumbnail scrolled into view in horizontal strip
+  useEffect(() => {
+    if (thumbnailContainerRef.current) {
+      const activeEl = thumbnailContainerRef.current.querySelector<HTMLElement>(`[data-thumb-id="${activeSlide.id}"]`);
+      if (activeEl) {
+        activeEl.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }
+    }
+  }, [currentSlideIndex, activeSlide.id]);
+
+  // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (isLightboxOpen) {
@@ -184,21 +243,21 @@ export const GallerySection: React.FC = () => {
   }, [isLightboxOpen]);
 
   return (
-    <section className="relative pt-12" id="gallery">
+    <section className="relative pt-6 md:pt-8" id="gallery">
       {/* Section Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
         <div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
             <span className="text-accentpink text-2xl">✿</span>
-            <h2 className="text-3xl font-bold text-textmain font-display">Gallery & Activities</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-textmain font-display">Gallery & Activities</h2>
           </div>
-          <p className="handwritten text-xl md:text-2xl text-deeprose mt-1 pl-8">
-            portfolio presentation slides & live event snapshots ♡
+          <p className="handwritten text-lg md:text-xl text-deeprose pl-7">
+            portfolio presentation slides & snapshots ♡
           </p>
         </div>
 
-        {/* Category Filter Pills */}
-        <div className="flex flex-wrap gap-1.5 sm:gap-2">
+        {/* Category Filter Pills & Auto-Play Controls */}
+        <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
           {categories.map((cat) => {
             const Icon = cat.icon;
             const isActive = selectedCategory === cat.label;
@@ -206,9 +265,9 @@ export const GallerySection: React.FC = () => {
               <button
                 key={cat.label}
                 onClick={() => setSelectedCategory(cat.label)}
-                className={`px-3 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1.5 transition-all duration-200 cursor-pointer shadow-2xs ${
+                className={`px-2.5 py-1 rounded-full text-xs font-semibold flex items-center gap-1.5 transition-all duration-200 cursor-pointer shadow-2xs ${
                   isActive
-                    ? 'bg-accentpink text-white shadow-sm scale-105'
+                    ? 'bg-accentpink text-white shadow-xs scale-105'
                     : 'bg-white/80 hover:bg-white text-textmain hover:text-accentpink border border-blush/40'
                 }`}
               >
@@ -220,144 +279,231 @@ export const GallerySection: React.FC = () => {
               </button>
             );
           })}
+
+          {/* Autoplay Toggle Button */}
+          <button
+            onClick={() => setIsAutoPlay(!isAutoPlay)}
+            className={`px-2.5 py-1 rounded-full text-xs font-semibold flex items-center gap-1 transition-colors border ${
+              isAutoPlay
+                ? 'bg-softpink/50 text-deeprose border-accentpink/40 hover:bg-softpink'
+                : 'bg-gray-100 text-gray-500 border-gray-200 hover:bg-gray-200'
+            }`}
+            title={isAutoPlay ? 'Auto-slide aktif (Jeda)' : 'Auto-slide non-aktif (Putar)'}
+          >
+            {isAutoPlay ? <Pause size={11} /> : <Play size={11} />}
+            <span className="text-[11px]">{isAutoPlay ? 'Auto (4.5s)' : 'Pause'}</span>
+          </button>
         </div>
       </div>
 
-      {/* Main Interactive Slide Showcase */}
-      <div className="relative mb-10 bg-white/90 rounded-2xl p-3 sm:p-5 md:p-6 shadow-md border border-blush/50 backdrop-blur-xs">
+      {/* Main Interactive Slide Showcase (Desktop-fitted max-w-2xl / max-w-3xl) */}
+      <div
+        className="relative max-w-2xl lg:max-w-3xl mx-auto bg-white/95 rounded-2xl p-3 sm:p-4 shadow-md border border-blush/50 backdrop-blur-xs mb-4 transition-all duration-300"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
         {/* Scrapbook Tape Accent */}
-        <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 w-28 h-6 bg-yellow-100/80 border border-yellow-200/90 shadow-2xs rotate-[-1deg] pointer-events-none rounded-xs z-20 flex items-center justify-center">
-          <span className="text-[10px] font-mono tracking-widest text-amber-800/60 uppercase">PRESENTATION</span>
+        <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-24 h-5 bg-yellow-100/90 border border-yellow-200 shadow-2xs rotate-[-1deg] pointer-events-none rounded-xs z-20 flex items-center justify-center">
+          <span className="text-[9px] font-mono tracking-widest text-amber-800/70 uppercase">PRESENTATION</span>
         </div>
 
-        {/* Showcase Header Bar */}
-        <div className="flex items-center justify-between gap-3 mb-4 pb-3 border-b border-blush/30">
+        {/* Showcase Header Bar (Compact) */}
+        <div className="flex items-center justify-between gap-3 mb-2 pb-2 border-b border-blush/30">
           <div className="min-w-0">
             <div className="flex items-center gap-2">
               <span className="px-2 py-0.5 rounded-md bg-accentpink/15 text-deeprose font-bold text-xs">
                 Slide {activeSlide.slideNumber} of {gallerySlides.length}
               </span>
               <span className="text-xs text-textmuted hidden sm:inline">• {activeSlide.category}</span>
+              {isHovered && isAutoPlay && (
+                <span className="text-[10px] text-amber-600 font-medium bg-amber-50 px-1.5 py-0.2 rounded border border-amber-200/60 animate-pulse">
+                  Jeda saat hover
+                </span>
+              )}
             </div>
-            <h3 className="font-display font-bold text-base sm:text-lg text-textmain truncate mt-1">
+            <h3 className="font-display font-bold text-sm sm:text-base text-textmain truncate mt-0.5">
               {activeSlide.title}
             </h3>
           </div>
 
-          <div className="flex items-center gap-2 shrink-0">
+          <div className="flex items-center gap-1.5 shrink-0">
             <button
               onClick={() => setIsLightboxOpen(true)}
-              className="p-2 rounded-lg bg-softpink/40 hover:bg-softpink text-textmain hover:text-deeprose transition-colors flex items-center gap-1.5 text-xs font-semibold"
+              className="px-2 py-1 rounded-lg bg-softpink/40 hover:bg-softpink text-textmain hover:text-deeprose transition-colors flex items-center gap-1 text-xs font-semibold"
               title="Perbesar Slide (Fullscreen Zoom)"
             >
-              <Maximize2 size={14} />
+              <Maximize2 size={13} />
               <span className="hidden sm:inline">Perbesar</span>
             </button>
           </div>
         </div>
 
-        {/* Slide Display Area */}
-        <div className="relative aspect-[16/9] w-full rounded-xl overflow-hidden bg-neutral-900/5 shadow-inner border border-black/5 group">
-          <AnimatePresence mode="wait">
+        {/* Slide Display Area (Constrained 16:9 fitting desktop view) */}
+        <div className="relative aspect-[16/9] w-full max-h-[330px] sm:max-h-[360px] md:max-h-[390px] rounded-xl overflow-hidden bg-neutral-900/5 shadow-inner border border-black/5 group">
+          <AnimatePresence mode="wait" custom={slideDirection}>
             <motion.img
               key={activeSlide.id}
+              custom={slideDirection}
+              variants={slideVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
               src={activeSlide.image}
               alt={activeSlide.title}
-              initial={{ opacity: 0, scale: 0.98 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 1.01 }}
-              transition={{ duration: 0.25 }}
               className="w-full h-full object-contain cursor-pointer select-none"
               onClick={() => setIsLightboxOpen(true)}
               loading="lazy"
             />
           </AnimatePresence>
 
+          {/* Auto-Slide Progress Bar */}
+          {isAutoPlay && !isHovered && !isLightboxOpen && (
+            <motion.div
+              key={`progress-${activeSlide.id}`}
+              initial={{ width: '0%' }}
+              animate={{ width: '100%' }}
+              transition={{ duration: 4.5, ease: 'linear' }}
+              className="absolute bottom-0 left-0 h-1 bg-accentpink/80 z-20"
+            />
+          )}
+
           {/* Navigation Arrows */}
           <button
             onClick={handlePrev}
             aria-label="Slide Sebelumnya"
-            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/90 hover:bg-accentpink text-textmain hover:text-white shadow-md flex items-center justify-center transition-all duration-200 opacity-80 hover:opacity-100 hover:scale-110 cursor-pointer z-10"
+            className="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/90 hover:bg-accentpink text-textmain hover:text-white shadow-md flex items-center justify-center transition-all duration-200 opacity-80 hover:opacity-100 hover:scale-110 cursor-pointer z-10"
           >
-            <ChevronLeft size={20} />
+            <ChevronLeft size={18} />
           </button>
           <button
             onClick={handleNext}
             aria-label="Slide Selanjutnya"
-            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/90 hover:bg-accentpink text-textmain hover:text-white shadow-md flex items-center justify-center transition-all duration-200 opacity-80 hover:opacity-100 hover:scale-110 cursor-pointer z-10"
+            className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/90 hover:bg-accentpink text-textmain hover:text-white shadow-md flex items-center justify-center transition-all duration-200 opacity-80 hover:opacity-100 hover:scale-110 cursor-pointer z-10"
           >
-            <ChevronRight size={20} />
+            <ChevronRight size={18} />
           </button>
         </div>
 
-        {/* Slide Caption Note */}
-        <div className="mt-4 pt-3 px-2 flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-t border-blush/20">
-          <p className="text-xs sm:text-sm text-textmuted">
+        {/* Compact Slide Caption Bar */}
+        <div className="mt-2 pt-2 px-1 flex items-center justify-between gap-2 border-t border-blush/20 text-xs text-textmuted">
+          <p className="truncate">
             <strong className="text-textmain">{activeSlide.subtitle}:</strong> {activeSlide.description}
           </p>
-          <div className="text-[11px] text-textmuted shrink-0 flex items-center gap-1 font-mono">
-            <span>Gunakan panah &larr; &rarr; untuk navigasi</span>
+          <span className="shrink-0 text-[10px] font-mono opacity-80 hidden md:inline">
+            Slide {activeSlide.slideNumber}/{gallerySlides.length}
+          </span>
+        </div>
+
+        {/* Sleek Horizontal Thumbnail Ribbon (Directly below slide) */}
+        <div className="mt-3 pt-2 border-t border-blush/25">
+          <div className="flex items-center justify-between mb-1.5 text-xs text-textmuted">
+            <span className="font-semibold text-textmain">Daftar Slide ({gallerySlides.length})</span>
+            <button
+              onClick={() => setShowFullGrid(!showFullGrid)}
+              className="text-[11px] text-deeprose hover:underline flex items-center gap-1"
+            >
+              <Grid size={11} /> {showFullGrid ? 'Tutup Grid Album' : 'Lihat Semua Grid'}
+            </button>
+          </div>
+
+          <div
+            ref={thumbnailContainerRef}
+            className="flex gap-2 overflow-x-auto pb-1.5 scrollbar-thin scrollbar-thumb-accentpink/30 hover:scrollbar-thumb-accentpink/60 transition-colors"
+          >
+            {gallerySlides.map((slide) => {
+              const isSelected = activeSlide.id === slide.id;
+              return (
+                <button
+                  key={slide.id}
+                  data-thumb-id={slide.id}
+                  onClick={() => handleSelectSlide(gallerySlides.findIndex((s) => s.id === slide.id))}
+                  className={`group relative shrink-0 w-20 sm:w-24 aspect-[16/9] rounded-lg overflow-hidden border transition-all duration-200 cursor-pointer ${
+                    isSelected
+                      ? 'ring-2 ring-accentpink border-accentpink shadow-sm scale-105 opacity-100'
+                      : 'border-blush/40 hover:border-accentpink/70 opacity-70 hover:opacity-100 hover:scale-102'
+                  }`}
+                  title={slide.title}
+                >
+                  <img
+                    src={slide.image}
+                    alt={slide.title}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                  <div className="absolute bottom-0.5 right-0.5 px-1 rounded bg-black/65 text-white font-mono text-[8px] font-bold">
+                    #{slide.slideNumber}
+                  </div>
+                </button>
+              );
+            })}
           </div>
         </div>
       </div>
 
-      {/* Slide Thumbnails Album Grid */}
-      <div>
-        <div className="flex items-center justify-between mb-4">
-          <h4 className="font-display font-semibold text-textmain text-base">
-            Semua Slide ({filteredSlides.length})
-          </h4>
-          <span className="text-xs text-textmuted">Klik gambar untuk melihat</span>
-        </div>
-
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4">
-          {filteredSlides.map((slide) => {
-            const isSelected = activeSlide.id === slide.id;
-            return (
-              <div
-                key={slide.id}
-                onClick={() => {
-                  const targetIndex = gallerySlides.findIndex((s) => s.id === slide.id);
-                  if (targetIndex !== -1) {
-                    setCurrentSlideIndex(targetIndex);
-                  }
-                }}
-                className={`group relative bg-white rounded-xl p-2 cursor-pointer transition-all duration-300 border ${
-                  isSelected
-                    ? 'ring-2 ring-accentpink border-accentpink shadow-md scale-[1.02] bg-softpink/10'
-                    : 'border-blush/40 hover:border-accentpink/60 shadow-2xs hover:shadow-md hover:-translate-y-1'
-                }`}
+      {/* Optional Full Grid View (Collapsed by default, expands when clicked) */}
+      <AnimatePresence>
+        {showFullGrid && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="overflow-hidden mt-4 pt-4 border-t border-blush/30"
+          >
+            <div className="flex items-center justify-between mb-3">
+              <h4 className="font-display font-semibold text-textmain text-sm">
+                Album Grid ({filteredSlides.length} Slide)
+              </h4>
+              <button
+                onClick={() => setShowFullGrid(false)}
+                className="text-xs text-textmuted hover:text-deeprose transition-colors"
               >
-                {/* Washi tape mini sticker */}
-                <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-12 h-3 bg-yellow-100/70 border border-yellow-200/80 rounded-2xs rotate-[1deg] pointer-events-none z-10 opacity-70 group-hover:opacity-100 transition-opacity"></div>
+                Tutup Grid ✕
+              </button>
+            </div>
 
-                {/* 16:9 Thumbnail Image */}
-                <div className="relative aspect-[16/9] w-full rounded-lg overflow-hidden bg-neutral-100 border border-black/5">
-                  <img
-                    src={slide.image}
-                    alt={slide.title}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                  <div className="absolute bottom-1 right-1 px-1.5 py-0.5 rounded bg-black/60 text-white font-mono text-[9px] font-bold">
-                    #{slide.slideNumber}
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2.5 sm:gap-3">
+              {filteredSlides.map((slide) => {
+                const isSelected = activeSlide.id === slide.id;
+                return (
+                  <div
+                    key={slide.id}
+                    onClick={() => {
+                      const targetIndex = gallerySlides.findIndex((s) => s.id === slide.id);
+                      if (targetIndex !== -1) {
+                        handleSelectSlide(targetIndex);
+                        window.scrollTo({
+                          top: document.getElementById('gallery')?.offsetTop || 0,
+                          behavior: 'smooth',
+                        });
+                      }
+                    }}
+                    className={`group relative bg-white rounded-lg p-1.5 cursor-pointer transition-all duration-200 border ${
+                      isSelected
+                        ? 'ring-2 ring-accentpink border-accentpink shadow-sm bg-softpink/10'
+                        : 'border-blush/40 hover:border-accentpink/60 shadow-2xs hover:shadow-xs'
+                    }`}
+                  >
+                    <div className="relative aspect-[16/9] w-full rounded overflow-hidden bg-neutral-100">
+                      <img
+                        src={slide.image}
+                        alt={slide.title}
+                        className="w-full h-full object-cover transition-transform duration-200 group-hover:scale-105"
+                        loading="lazy"
+                      />
+                      <div className="absolute bottom-1 right-1 px-1 py-0.2 rounded bg-black/60 text-white font-mono text-[8px] font-bold">
+                        #{slide.slideNumber}
+                      </div>
+                    </div>
+                    <p className="mt-1 text-[11px] font-semibold text-textmain truncate group-hover:text-deeprose transition-colors">
+                      {slide.title}
+                    </p>
                   </div>
-                </div>
-
-                {/* Slide Caption */}
-                <div className="mt-2 px-1">
-                  <p className="text-xs font-semibold text-textmain truncate group-hover:text-deeprose transition-colors">
-                    {slide.title}
-                  </p>
-                  <p className="text-[10px] text-textmuted truncate">
-                    {slide.category}
-                  </p>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
+                );
+              })}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Fullscreen Lightbox Modal */}
       <AnimatePresence>
@@ -376,7 +522,7 @@ export const GallerySection: React.FC = () => {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="relative w-full max-w-6xl max-h-[95vh] flex flex-col z-10"
+              className="relative w-full max-w-5xl max-h-[92vh] flex flex-col z-10"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Lightbox Top Control Bar */}
@@ -409,7 +555,7 @@ export const GallerySection: React.FC = () => {
               </div>
 
               {/* Lightbox Main Image Display */}
-              <div className="relative aspect-[16/9] w-full max-h-[82vh] bg-black/60 rounded-xl overflow-hidden flex items-center justify-center border border-white/10 shadow-2xl">
+              <div className="relative aspect-[16/9] w-full max-h-[78vh] bg-black/60 rounded-xl overflow-hidden flex items-center justify-center border border-white/10 shadow-2xl">
                 <img
                   src={activeSlide.image}
                   alt={activeSlide.title}
