@@ -75,6 +75,28 @@ src/
 
 ---
 
+## 🛠️ Catatan Pemeliharaan & Perbaikan Bug (*Bug Fixes*)
+
+### Perbaikan Bug Auto-Scroll Tidak Disengaja ke Gallery
+* **Deskripsi Isu**: Ketika pengguna mengklik menu pada bilah navigasi samping (misalnya *Home*, *About*, *Experience*), halaman berhasil berpindah namun setelah beberapa detik tiba-tiba secara otomatis menggulir (*auto-scroll*) ke bagian Gallery.
+* **Akar Masalah**:
+  1. Fitur *auto-play* memicu pergantian slide setiap 4.5 detik.
+  2. Pemanggilan bawaan `activeEl.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' })` untuk menyelaraskan thumbnail aktif ternyata menggulir seluruh rantai elemen induk hingga ke tingkat `window/viewport`.
+  3. Akibatnya, saat pengguna berada di section lain, pergantian slide thumbnail memaksa layar tertarik ke bawah menuju Gallery.
+* **Solusi & Implementasi**:
+  1. **Pengguliran Terisolasi (*Container-Scoped Scroll*)**:
+     Mengganti `scrollIntoView()` dengan `container.scrollTo(...)` yang murni menggeser `scrollLeft` kontainer horizontal:
+     ```ts
+     const scrollOffset =
+       activeRect.left - containerRect.left + container.scrollLeft - container.clientWidth / 2 + activeRect.width / 2;
+     container.scrollTo({ left: Math.max(0, scrollOffset), behavior: 'smooth' });
+     ```
+     Dengan metode ini, posisi vertikal jendela browser (`window.scrollY`) 100% aman dan tidak akan tergeser.
+  2. **Viewport-Aware Autoplay (`IntersectionObserver`)**:
+     Menambahkan `IntersectionObserver` pada elemen `<section id="gallery">` sehingga timer auto-slide hanya berjalan saat Gallery sedang terlihat di layar. Saat pengguna membaca section lain, timer otomatis dijeda untuk menghemat CPU dan daya baterai.
+
+---
+
 ## 🚀 Pengujian & Kualitas
 
 - **Build Verifikasi**: Telah divalidasi dengan `tsc && vite build`, menghasilkan 0 error / warning TypeScript.

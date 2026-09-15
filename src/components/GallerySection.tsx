@@ -176,6 +176,8 @@ export const GallerySection: React.FC = () => {
   const [showFullGrid, setShowFullGrid] = useState<boolean>(false);
 
   const thumbnailContainerRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const [isSectionInView, setIsSectionInView] = useState<boolean>(true);
 
   const categories = [
     { label: 'All', icon: Layers, count: gallerySlides.length },
@@ -207,9 +209,25 @@ export const GallerySection: React.FC = () => {
     setCurrentSlideIndex(targetIndex);
   };
 
-  // Idle Auto-slide timer (4 seconds per slide when not hovered and lightbox is closed)
+  // Track if gallery section is in viewport to avoid running autoplay when user is on other sections
   useEffect(() => {
-    if (!isAutoPlay || isHovered || isLightboxOpen) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsSectionInView(entry.isIntersecting);
+      },
+      { threshold: 0.05 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Idle Auto-slide timer (4.5 seconds per slide when in view, not hovered, and lightbox is closed)
+  useEffect(() => {
+    if (!isAutoPlay || isHovered || isLightboxOpen || !isSectionInView) return;
 
     const interval = setInterval(() => {
       setSlideDirection('right');
@@ -217,16 +235,28 @@ export const GallerySection: React.FC = () => {
     }, 4500);
 
     return () => clearInterval(interval);
-  }, [isAutoPlay, isHovered, isLightboxOpen, currentSlideIndex]);
+  }, [isAutoPlay, isHovered, isLightboxOpen, isSectionInView, currentSlideIndex]);
 
-  // Keep active thumbnail scrolled into view in horizontal strip
+  // Keep active thumbnail scrolled into view in horizontal strip (scrolling only the container, never the window)
   useEffect(() => {
-    if (thumbnailContainerRef.current) {
-      const activeEl = thumbnailContainerRef.current.querySelector<HTMLElement>(`[data-thumb-id="${activeSlide.id}"]`);
-      if (activeEl) {
-        activeEl.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-      }
-    }
+    const container = thumbnailContainerRef.current;
+    if (!container) return;
+
+    const activeEl = container.querySelector<HTMLElement>(`[data-thumb-id="${activeSlide.id}"]`);
+    if (!activeEl) return;
+
+    const containerRect = container.getBoundingClientRect();
+    const activeRect = activeEl.getBoundingClientRect();
+
+    if (containerRect.width === 0) return;
+
+    const scrollOffset =
+      activeRect.left - containerRect.left + container.scrollLeft - container.clientWidth / 2 + activeRect.width / 2;
+
+    container.scrollTo({
+      left: Math.max(0, scrollOffset),
+      behavior: 'smooth',
+    });
   }, [currentSlideIndex, activeSlide.id]);
 
   // Keyboard navigation
@@ -243,7 +273,7 @@ export const GallerySection: React.FC = () => {
   }, [isLightboxOpen]);
 
   return (
-    <section className="relative pt-6 md:pt-8" id="gallery">
+    <section ref={sectionRef} className="relative pt-6 md:pt-8" id="gallery">
       {/* Section Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
         <div>
